@@ -16,7 +16,7 @@
 .header {
     display: flex;
     align-items: center; /* Centers items vertically within the header */
-    justify-content: start; /* Aligns items to the start of the header container */
+    justify-content: center; /* Centers items horizontally within the header */
     /* ... other styling for your header ... */
 }
 
@@ -166,4 +166,25 @@ tr:nth-child(even) {
             text-overflow: ellipsis;
         }
     }
+}
+
+/* إضافة القاعدة لتحديد عرض الأزرار وتنسيقها */
+.button {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 18px;
+    margin: 10px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    width: 300px; /* تحديد عرض ثابت للأزرار */
+    text-align: center; /* توسيط النص داخل الزر */
+}
+
+.button:hover {
+    background-color: #0056b3;
 }
