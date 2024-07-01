@@ -45,7 +45,6 @@ body {
     background-color: #e7e4e4;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    overflow-x: auto;
 }
 
 .directory-container {
@@ -77,18 +76,16 @@ table.directory {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
-    table-layout: fixed;
 }
 
 table.directory, th, td {
     border: 1px solid #ddd;
-    word-wrap: break-word;
 }
 
 th, td {
     text-align: left;
     padding: 8px;
-    white-space: normal;
+    white-space: nowrap; /* Prevent text wrapping */
 }
 
 th {
@@ -194,8 +191,6 @@ tr:nth-child(even) {
     cursor: pointer;
     text-decoration: none;
     transition: background-color 0.3s ease;
-    width: 250px; /* Ensure all buttons are the same width */
-    box-sizing: border-box;
 }
 
 .button:hover {
