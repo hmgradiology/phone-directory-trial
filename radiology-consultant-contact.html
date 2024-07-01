@@ -5,6 +5,29 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Radiology Consultant Contact</title>
 <link rel="stylesheet" href="style.css">
+<style>
+  .back-button-container {
+    text-align: center;
+    margin-top: 20px;
+  }
+  .button {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 18px;
+    margin: 10px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    width: 250px; /* Set a fixed width for all buttons */
+  }
+  .button:hover {
+    background-color: #0056b3;
+  }
+</style>
 </head>
 <body>
 <div class="header">
@@ -14,26 +37,364 @@
 <div class="directory-container">
   <div class="search-container">
     <label for="searchInput">Search:</label>
-    <input type="text" id="searchInput" onkeyup="searchDirectory()" placeholder="Search for names, ID or branch..">
+    <input type="text" id="searchInput" onkeyup="searchDirectory()" placeholder="Search for names, ID, or branch..">
   </div>
   <table class="directory">
     <thead>
       <tr>
+        <th>ID</th>
         <th>Doctor's Name</th>
-        <th>ID#</th>
-        <th>Mobile#</th>
+        <th>Mobile</th>
+        <th>Branch</th>
       </tr>
     </thead>
     <tbody>
-      <!-- Add table data here -->
+      <!-- Branch: OLAYA -->
+      <tr>
+        <td data-label="ID">12396</td>
+        <td data-label="Doctor's Name">Dr. Amneh Abdallah (HOD)</td>
+        <td data-label="Mobile">0547943848</td>
+        <td data-label="Branch">OLAYA</td>
+      </tr>
+      <tr>
+        <td data-label="ID">398820</td>
+        <td data-label="Doctor's Name">Dr. Shaima Shousha</td>
+        <td data-label="Mobile">0509026388</td>
+        <td data-label="Branch">OLAYA</td>
+      </tr>
+      <tr>
+        <td data-label="ID">70104</td>
+        <td data-label="Doctor's Name">Dr. Abdulaziz Al Dihan</td>
+        <td data-label="Mobile">0504485889</td>
+        <td data-label="Branch">OLAYA</td>
+      </tr>
+      <tr>
+        <td data-label="ID">70504</td>
+        <td data-label="Doctor's Name">Dr. Abdulkareem Rumayan</td>
+        <td data-label="Mobile">0505441784</td>
+        <td data-label="Branch">OLAYA</td>
+      </tr>
+      <tr>
+        <td data-label="ID">124101</td>
+        <td data-label="Doctor's Name">Dr. Yasser Al Hamdan</td>
+        <td data-label="Mobile">0505340099</td>
+        <td data-label="Branch">OLAYA</td>
+      </tr>
+      <tr>
+        <td data-label="ID">157761</td>
+        <td data-label="Doctor's Name">Dr. Othman Al Ghamdi</td>
+        <td data-label="Mobile">0504257080</td>
+        <td data-label="Branch">OLAYA</td>
+      </tr>
+      <tr>
+        <td data-label="ID">276362</td>
+        <td data-label="Doctor's Name">Dr. Abdulaziz Al Osaimi</td>
+        <td data-label="Mobile">0555245104</td>
+        <td data-label="Branch">OLAYA</td>
+      </tr>
+      <tr>
+        <td data-label="ID">371843</td>
+        <td data-label="Doctor's Name">Dr. Malak Al Saeed</td>
+        <td data-label="Mobile">0553334202</td>
+        <td data-label="Branch">OLAYA</td>
+      </tr>
+      <!-- Branch: TAKHASUSSI -->
+      <tr>
+        <td data-label="ID">158474</td>
+        <td data-label="Doctor's Name">Dr. Ehab Aboulfotouh (HOD)</td>
+        <td data-label="Mobile">0599988486</td>
+        <td data-label="Branch">TAKHASUSSI</td>
+      </tr>
+      <tr>
+        <td data-label="ID">4136-2</td>
+        <td data-label="Doctor's Name">Dr. Gulzar Hameed Chagla</td>
+        <td data-label="Mobile">0563677816</td>
+        <td data-label="Branch">TAKHASUSSI</td>
+      </tr>
+      <tr>
+        <td data-label="ID">274322</td>
+        <td data-label="Doctor's Name">Dr. Fatina Al Tahan</td>
+        <td data-label="Mobile">0505299447</td>
+        <td data-label="Branch">TAKHASUSSI</td>
+      </tr>
+      <tr>
+        <td data-label="ID">103541</td>
+        <td data-label="Doctor's Name">Dr. Nasser Mohd. Al Dossary</td>
+        <td data-label="Mobile">0551888889</td>
+        <td data-label="Branch">TAKHASUSSI</td>
+      </tr>
+      <tr>
+        <td data-label="ID">125417</td>
+        <td data-label="Doctor's Name">Dr. Mohammed Al Harbi</td>
+        <td data-label="Mobile">0556509008</td>
+        <td data-label="Branch">TAKHASUSSI</td>
+      </tr>
+      <tr>
+        <td data-label="ID">103540</td>
+        <td data-label="Doctor's Name">Dr. Meshaal Al Shaalan</td>
+        <td data-label="Mobile">0554485805</td>
+        <td data-label="Branch">TAKHASUSSI</td>
+      </tr>
+      <tr>
+        <td data-label="ID">106189</td>
+        <td data-label="Doctor's Name">Dr. Khaled Al Dosari</td>
+        <td data-label="Mobile">0505116112</td>
+        <td data-label="Branch">TAKHASUSSI</td>
+      </tr>
+      <tr>
+        <td data-label="ID">131220</td>
+        <td data-label="Doctor's Name">Dr. Nasser Al Amri</td>
+        <td data-label="Mobile">0555131259</td>
+        <td data-label="Branch">TAKHASUSSI</td>
+      </tr>
+      <tr>
+        <td data-label="ID">105550</td>
+        <td data-label="Doctor's Name">Dr. Asim Saleh Al Dhilan</td>
+        <td data-label="Mobile">0505331405</td>
+        <td data-label="Branch">TAKHASUSSI</td>
+      </tr>
+      <tr>
+        <td data-label="ID">131799</td>
+        <td data-label="Doctor's Name">Dr. Abdulrahim Al Mutairy</td>
+        <td data-label="Mobile">0541111812</td>
+        <td data-label="Branch">TAKHASUSSI</td>
+      </tr>
+      <tr>
+        <td data-label="ID">136359</td>
+        <td data-label="Doctor's Name">Dr. Bader Al Hariqi</td>
+        <td data-label="Mobile">0500013124</td>
+        <td data-label="Branch">TAKHASUSSI</td>
+      </tr>
+      <tr>
+        <td data-label="ID">187988</td>
+        <td data-label="Doctor's Name">Dr. Yahya Mahli</td>
+        <td data-label="Mobile">0540070777</td>
+        <td data-label="Branch">TAKHASUSSI</td>
+      </tr>
+      <tr>
+        <td data-label="ID">397663</td>
+        <td data-label="Doctor's Name">Dr. Hana Al Faleh</td>
+        <td data-label="Mobile">0546344330</td>
+        <td data-label="Branch">TAKHASUSSI</td>
+      </tr>
+      <tr>
+        <td data-label="ID">398531</td>
+        <td data-label="Doctor's Name">Dr. Abdulrahman AlEisa</td>
+        <td data-label="Mobile">0536620334</td>
+        <td data-label="Branch">TAKHASUSSI</td>
+      </tr>
+      <!-- Branch: QASSIM -->
+      <tr>
+        <td data-label="ID">135924</td>
+        <td data-label="Doctor's Name">Dr. Sanam Mustafa Soomro (HOD)</td>
+        <td data-label="Mobile">0540977208</td>
+        <td data-label="Branch">QASSIM</td>
+      </tr>
+      <tr>
+        <td data-label="ID">375263</td>
+        <td data-label="Doctor's Name">Dr. Mohammed Al-Damegh</td>
+        <td data-label="Mobile">0562711172</td>
+        <td data-label="Branch">QASSIM</td>
+      </tr>
+      <!-- Branch: RAYYAN -->
+      <tr>
+        <td data-label="ID">12008</td>
+        <td data-label="Doctor's Name">Dr. Khalid Rasheed Hameed (HOD)</td>
+        <td data-label="Mobile">0552749529</td>
+        <td data-label="Branch">RAYYAN</td>
+      </tr>
+      <tr>
+        <td data-label="ID">14009</td>
+        <td data-label="Doctor's Name">Dr. Fadi Mamdouh</td>
+        <td data-label="Mobile">0550870465</td>
+        <td data-label="Branch">RAYYAN</td>
+      </tr>
+      <tr>
+        <td data-label="ID">262903</td>
+        <td data-label="Doctor's Name">Dr. Mohammed El Rafaey</td>
+        <td data-label="Mobile">0509732876</td>
+        <td data-label="Branch">RAYYAN</td>
+      </tr>
+      <tr>
+        <td data-label="ID">298027</td>
+        <td data-label="Doctor's Name">Dr. Ammad Zahid Farooq</td>
+        <td data-label="Mobile">0568858352</td>
+        <td data-label="Branch">RAYYAN</td>
+      </tr>
+      <tr>
+        <td data-label="ID">395043</td>
+        <td data-label="Doctor's Name">Dr. Samia Al Mokhtari</td>
+        <td data-label="Mobile">0507481748</td>
+        <td data-label="Branch">RAYYAN</td>
+      </tr>
+      <tr>
+        <td data-label="ID">70435</td>
+        <td data-label="Doctor's Name">Dr. Fahad Mohammad</td>
+        <td data-label="Mobile">0501322111</td>
+        <td data-label="Branch">RAYYAN</td>
+      </tr>
+      <tr>
+        <td data-label="ID">70497</td>
+        <td data-label="Doctor's Name">Dr. Bader Madullah Al Mutairy</td>
+        <td data-label="Mobile">0554475959</td>
+        <td data-label="Branch">RAYYAN</td>
+      </tr>
+      <tr>
+        <td data-label="ID">70749</td>
+        <td data-label="Doctor's Name">Dr. Makki Al Muntashri</td>
+        <td data-label="Mobile">0553881273</td>
+        <td data-label="Branch">RAYYAN</td>
+      </tr>
+      <tr>
+        <td data-label="ID">70731</td>
+        <td data-label="Doctor's Name">Dr. Abdulrahman Khalifah</td>
+        <td data-label="Mobile">0530034382</td>
+        <td data-label="Branch">RAYYAN</td>
+      </tr>
+      <tr>
+        <td data-label="ID">70836</td>
+        <td data-label="Doctor's Name">Dr. Sulaiman Al Rajhi</td>
+        <td data-label="Mobile">0503469323</td>
+        <td data-label="Branch">RAYYAN</td>
+      </tr>
+      <tr>
+        <td data-label="ID">70663</td>
+        <td data-label="Doctor's Name">Dr. Waddah Al Bassam</td>
+        <td data-label="Mobile">0505271655</td>
+        <td data-label="Branch">RAYYAN</td>
+      </tr>
+      <tr>
+        <td data-label="ID">140524</td>
+        <td data-label="Doctor's Name">Dr. Fatima Shabeeb Al Dossary</td>
+        <td data-label="Mobile">0504446193</td>
+        <td data-label="Branch">RAYYAN</td>
+      </tr>
+      <!-- Branch: SWEIDI -->
+      <tr>
+        <td data-label="ID">13902</td>
+        <td data-label="Doctor's Name">Dr. Yousef Rabea (HOD)</td>
+        <td data-label="Mobile">0567127756</td>
+        <td data-label="Branch">SWEIDI</td>
+      </tr>
+      <tr>
+        <td data-label="ID">141944</td>
+        <td data-label="Doctor's Name">Dr. Ibrahim Almahbashi</td>
+        <td data-label="Mobile">0532702543</td>
+        <td data-label="Branch">SWEIDI</td>
+      </tr>
+      <tr>
+        <td data-label="ID">292242</td>
+        <td data-label="Doctor's Name">Dr. Vera Yazbeck</td>
+        <td data-label="Mobile">0508314197</td>
+        <td data-label="Branch">SWEIDI</td>
+      </tr>
+      <tr>
+        <td data-label="ID">70927</td>
+        <td data-label="Doctor's Name">Dr. Ahmad Saeed Al Zahrani</td>
+        <td data-label="Mobile">0553377907</td>
+        <td data-label="Branch">SWEIDI</td>
+      </tr>
+      <tr>
+        <td data-label="ID">247463</td>
+        <td data-label="Doctor's Name">Dr. Abdulmalik Sharidah</td>
+        <td data-label="Mobile">0504896963</td>
+        <td data-label="Branch">SWEIDI</td>
+      </tr>
+      <tr>
+        <td data-label="ID">264882</td>
+        <td data-label="Doctor's Name">Dr. Najd Alluhaidan</td>
+        <td data-label="Mobile">0550554222</td>
+        <td data-label="Branch">SWEIDI</td>
+      </tr>
+      <tr>
+        <td data-label="ID">192226</td>
+        <td data-label="Doctor's Name">Dr. Khalifah Al Ghofaily</td>
+        <td data-label="Mobile">0590106871</td>
+        <td data-label="Branch">SWEIDI</td>
+      </tr>
+      <tr>
+        <td data-label="ID">397617</td>
+        <td data-label="Doctor's Name">Dr. Salah Al Humaid</td>
+        <td data-label="Mobile">0562388802</td>
+        <td data-label="Branch">SWEIDI</td>
+      </tr>
+      <!-- Branch: KHOBAR -->
+      <tr>
+        <td data-label="ID">342466</td>
+        <td data-label="Doctor's Name">Dr. Hisham AlDossary (HOD)</td>
+        <td data-label="Mobile">0505869453</td>
+        <td data-label="Branch">KHOBAR</td>
+      </tr>
+      <tr>
+        <td data-label="ID">217996</td>
+        <td data-label="Doctor's Name">Dr. Tariq Hegazi</td>
+        <td data-label="Mobile">0503884858</td>
+        <td data-label="Branch">KHOBAR</td>
+      </tr>
+      <tr>
+        <td data-label="ID">248161</td>
+        <td data-label="Doctor's Name">Dr. Hassan Al Zahrani</td>
+        <td data-label="Mobile">0553776606</td>
+        <td data-label="Branch">KHOBAR</td>
+      </tr>
+      <tr>
+        <td data-label="ID">249281</td>
+        <td data-label="Doctor's Name">Dr. Saeed Al-Jubran</td>
+        <td data-label="Mobile">0509345666</td>
+        <td data-label="Branch">KHOBAR</td>
+      </tr>
+      <tr>
+        <td data-label="ID">280382</td>
+        <td data-label="Doctor's Name">Dr. Fouad Aladel</td>
+        <td data-label="Mobile">0503825284</td>
+        <td data-label="Branch">KHOBAR</td>
+      </tr>
+      <tr>
+        <td data-label="ID">361442</td>
+        <td data-label="Doctor's Name">Dr. Yasser Nasser Asiri</td>
+        <td data-label="Mobile">0503203259</td>
+        <td data-label="Branch">KHOBAR</td>
+      </tr>
+      <!-- Branch: JEDDAH -->
+      <tr>
+        <td data-label="ID">398855</td>
+        <td data-label="Doctor's Name">Dr. Ahmed Abukwaik (HOD)</td>
+        <td data-label="Mobile">0508587859</td>
+        <td data-label="Branch">JEDDAH</td>
+      </tr>
+      <tr>
+        <td data-label="ID">400040</td>
+        <td data-label="Doctor's Name">Dr. Hatim Hussain Al Absi</td>
+        <td data-label="Mobile">0506651550</td>
+        <td data-label="Branch">JEDDAH</td>
+      </tr>
+      <tr>
+        <td data-label="ID">400005</td>
+        <td data-label="Doctor's Name">Dr. Shaza Salem Al Sharif</td>
+        <td data-label="Mobile">0505594484</td>
+        <td data-label="Branch">JEDDAH</td>
+      </tr>
+      <tr>
+        <td data-label="ID">401128</td>
+        <td data-label="Doctor's Name">Dr. Basem Hasan Bahakeem</td>
+        <td data-label="Mobile">0555523739</td>
+        <td data-label="Branch">JEDDAH</td>
+      </tr>
+      <!-- Branch: SAHAFA -->
+      <tr>
+        <td data-label="ID">401403</td>
+        <td data-label="Doctor's Name">Dr. Ishaq Uri (HOD)</td>
+        <td data-label="Mobile">0502659398</td>
+        <td data-label="Branch">SAHAFA</td>
+      </tr>
     </tbody>
   </table>
 </div>
-<div class="footer">
-  &copy; 2024 Abdullah Al-Garni. All rights reserved.
-</div>
 <div class="back-button-container">
   <a href="index.html" class="button">Back</a>
+</div>
+<div class="footer">
+  &copy; 2024 Abdullah AlQarni. All rights reserved.
 </div>
 <script>
 function searchDirectory() {
@@ -44,21 +405,21 @@ function searchDirectory() {
   tr = table.getElementsByTagName("tr");
 
   for (i = 0; i < tr.length; i++) {
-    var tds = tr[i].getElementsByTagName("td");
-    var found = false;
-    for (var j = 0; j < tds.length; j++) {
-      if (tds[j]) {
-        txtValue = tds[j].textContent || tds[j].innerText;
+    td = tr[i].getElementsByTagName("td");
+    if (td) {
+      var match = false;
+      for (var j = 0; j < td.length; j++) {
+        txtValue = td[j].textContent || td[j].innerText;
         if (txtValue.toUpperCase().indexOf(filter) > -1) {
-          found = true;
+          match = true;
           break;
         }
       }
-    }
-    if (found) {
-      tr[i].style.display = "";
-    } else {
-      tr[i].style.display = "none";
+      if (match) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
     }
   }
 }
