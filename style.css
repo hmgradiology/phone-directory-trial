@@ -88,7 +88,7 @@ th, td {
     white-space: normal; /* Allow text wrapping */
     overflow: hidden; /* Hide overflow text */
     text-overflow: ellipsis; /* Add ellipsis for overflow text */
-    word-break: break-all; /* Break words at arbitrary points to prevent overflow */
+    word-break: break-word; /* Break words at arbitrary points to prevent overflow */
 }
 
 th {
