@@ -5,42 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Radiology Extensions</title>
 <link rel="stylesheet" href="style.css">
-<style>
-  .directory-container {
-    margin: auto;
-    width: 90%;
-    max-width: 1000px;
-    background-color: #e7e4e4;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  th, td {
-    text-align: left;
-    padding: 8px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  .back-button-container {
-    text-align: center;
-    margin-top: 20px;
-  }
-  .button {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 16px;
-    color: white;
-    background-color: #007bff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-  }
-  .button:hover {
-    background-color: #0056b3;
-  }
-</style>
 </head>
 <body>
 <div class="header">
@@ -226,7 +190,7 @@
         <td data-label="Name">Reporting Room</td>
         <td data-label="Branch code">8883</td>
         <td data-label="Branch name">RAYYAN</td>
-        <td data-label="Ext">9855/9852/9859/9856</td>
+        <td data-label="Ext">9855/9852/9859/9856<br>103056/103057/103058/103059<br>103060/103061/103062/103063</td>
       </tr>
       <tr>
         <td data-label="Name">MRI 1 & 2</td>
@@ -269,7 +233,7 @@
         <td data-label="Name">Reporting Room</td>
         <td data-label="Branch code">8884</td>
         <td data-label="Branch name">TAKHASUSSI</td>
-        <td data-label="Ext">3748/3752/3753/3750</td>
+        <td data-label="Ext">3748/3752/3753/3750<br>3754/3755/3756/3757<br>3758/3759/3760/3761</td>
       </tr>
       <tr>
         <td data-label="Name">MRI</td>
@@ -290,13 +254,13 @@
         <td data-label="Ext">3765</td>
       </tr>
       <tr>
-        <td data-label="Name"TAK Nuclear Medicine</td>
+        <td data-label="Name">TAK Nuclear Medicine</td>
         <td data-label="Branch code">8884</td>
         <td data-label="Branch name">TAKHASUSSI</td>
         <td data-label="Ext">5165/3758</td>
       </tr>
-        <tr>
-        <td data-label="Name"Nuclear Medicine Coordinator</td>
+      <tr>
+        <td data-label="Name">Nuclear Medicine Coordinator</td>
         <td data-label="Branch code">8884</td>
         <td data-label="Branch name">TAKHASUSSI</td>
         <td data-label="Ext">3771</td>
@@ -324,7 +288,7 @@
         <td data-label="Name">Reporting Room</td>
         <td data-label="Branch code">8886</td>
         <td data-label="Branch name">SUWAIDI</td>
-        <td data-label="Ext">3658/3657/3656/3654</td>
+        <td data-label="Ext">3658/3657/3656/3654<br>3655/3656/3657/3658<br>3659/3660/3661/3662</td>
       </tr>
       <tr>
         <td data-label="Name">MRI</td>
@@ -459,7 +423,7 @@
         <td data-label="Name">Reporting Room</td>
         <td data-label="Branch code">103054</td>
         <td data-label="Branch name">SAHAFA</td>
-        <td data-label="Ext">103054/103057/103058/103077/103078/103079</td>
+        <td data-label="Ext">103054/103057/103058/103077<br>103078/103079</td>
       </tr>
       <tr>
         <td data-label="Name">MRI</td>
@@ -543,17 +507,10 @@ function searchDirectory() {
   tr = table.getElementsByTagName("tr");
 
   for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td");
-    if (td.length > 0) {
-      let match = false;
-      for (let j = 0; j < td.length; j++) {
-        txtValue = td[j].textContent || td[j].innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-          match = true;
-          break;
-        }
-      }
-      if (match) {
+    td = tr[i].getElementsByTagName("td")[0]; // Change to [0] to search by Name
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
         tr[i].style.display = "";
       } else {
         tr[i].style.display = "none";
