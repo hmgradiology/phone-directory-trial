@@ -6,15 +6,29 @@
 <title>Radiology Extensions</title>
 <link rel="stylesheet" href="style.css">
 <style>
+  .directory-container {
+    margin: auto;
+    width: 90%;
+    max-width: 1000px;
+    background-color: #e7e4e4;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  th, td {
+    text-align: left;
+    padding: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
   .back-button-container {
     text-align: center;
     margin-top: 20px;
   }
   .button {
     display: inline-block;
-    padding: 15px 30px;
-    font-size: 18px;
-    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
     color: white;
     background-color: #007bff;
     border: none;
@@ -22,13 +36,9 @@
     cursor: pointer;
     text-decoration: none;
     transition: background-color 0.3s ease;
-    width: 250px; /* Set a fixed width for all buttons */
   }
   .button:hover {
     background-color: #0056b3;
-  }
-  table.directory, th, td {
-    word-wrap: break-word; /* Ensure long text wraps within the cell */
   }
 </style>
 </head>
@@ -40,7 +50,7 @@
 <div class="directory-container">
   <div class="search-container">
     <label for="searchInput">Search:</label>
-    <input type="text" id="searchInput" onkeyup="searchDirectory()" placeholder="Search for names, branch code, or branch name..">
+    <input type="text" id="searchInput" onkeyup="searchDirectory()" placeholder="Search for names..">
   </div>
   <table class="directory">
     <thead>
@@ -280,13 +290,13 @@
         <td data-label="Ext">3765</td>
       </tr>
       <tr>
-        <td data-label="Name">Nuclear Medicine</td>
+        <td data-label="Name"TAK Nuclear Medicine</td>
         <td data-label="Branch code">8884</td>
         <td data-label="Branch name">TAKHASUSSI</td>
         <td data-label="Ext">5165/3758</td>
       </tr>
-      <tr>
-        <td data-label="Name">Nuclear Medicine Coordinator</td>
+        <tr>
+        <td data-label="Name"Nuclear Medicine Coordinator</td>
         <td data-label="Branch code">8884</td>
         <td data-label="Branch name">TAKHASUSSI</td>
         <td data-label="Ext">3771</td>
@@ -533,17 +543,10 @@ function searchDirectory() {
   tr = table.getElementsByTagName("tr");
 
   for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td");
+    td = tr[i].getElementsByTagName("td")[0]; // Change to [0] to search by Name
     if (td) {
-      var match = false;
-      for (var j = 0; j < td.length; j++) {
-        txtValue = td[j].textContent || td[j].innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-          match = true;
-          break;
-        }
-      }
-      if (match) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
         tr[i].style.display = "";
       } else {
         tr[i].style.display = "none";
