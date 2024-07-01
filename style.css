@@ -1,3 +1,4 @@
+/* This style will apply to all browsers */
 .element {
     padding: 10px;
 }
@@ -16,8 +17,8 @@
 .header {
     display: flex;
     align-items: center; /* Centers items vertically within the header */
-    justify-content: center; /* Centers items horizontally within the header */
-    /* ... other styling for your header ... */
+    justify-content: center; /* Centers items horizontally within the header container */
+    text-align: center;
 }
 
 body {
@@ -44,7 +45,6 @@ body {
     background-color: #e7e4e4;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    overflow-x: auto; /* Allow horizontal scrolling if needed */
 }
 
 .directory-container {
@@ -85,10 +85,7 @@ table.directory, th, td {
 th, td {
     text-align: left;
     padding: 8px;
-    white-space: normal; /* Allow text wrapping */
-    overflow: hidden; /* Hide overflow text */
-    text-overflow: ellipsis; /* Add ellipsis for overflow text */
-    word-break: break-word; /* Break words at arbitrary points to prevent overflow */
+    white-space: nowrap; /* Prevent text wrapping */
 }
 
 th {
@@ -170,7 +167,18 @@ tr:nth-child(even) {
     }
 }
 
-/* إضافة القاعدة لتحديد عرض الأزرار وتنسيقها */
+.footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #666;
+}
+
+.back-button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
 .button {
     display: inline-block;
     padding: 15px 30px;
@@ -183,8 +191,6 @@ tr:nth-child(even) {
     cursor: pointer;
     text-decoration: none;
     transition: background-color 0.3s ease;
-    width: 300px; /* تحديد عرض ثابت للأزرار */
-    text-align: center; /* توسيط النص داخل الزر */
 }
 
 .button:hover {
