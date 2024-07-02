@@ -1,8 +1,8 @@
 body {
     font-family: Arial, sans-serif;
     padding: 20px;
-    background-color: #e0f7fa;
-    color: #00695c;
+    background-color: #f4f4f4;
+    color: #333;
 }
 
 .directory-container {
@@ -11,7 +11,7 @@ body {
     max-width: 1000px;
     background-color: #fff;
     padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 105, 92, 0.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -20,23 +20,23 @@ body {
 }
 
 table.directory, th, td {
-    border: 1px solid #004d40;
+    border: 1px solid #ddd;
 }
 
 th {
-    background-color: #004d40;
-    color: #e0f7fa;
+    background-color: #ff5722;
+    color: #fff;
 }
 
 tr:nth-child(even) {
-    background-color: #b2dfdb;
+    background-color: #ffe0b2;
 }
 
 .button {
     color: #fff;
-    background-color: #00796b;
+    background-color: #ff5722;
 }
 
 .button:hover {
-    background-color: #004d40;
+    background-color: #e64a19;
 }
