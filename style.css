@@ -1,30 +1,29 @@
-/* This style will apply to all browsers */
+/* General Element Styling */
 .element {
     padding: 10px;
-}
-
-.element {
-    height: 100vh; /* Fallback for browsers that do not support environment variables */
+    height: 100vh;
     height: calc(var(--vh, 1vh) * 100);
 }
 
+/* Logo and Header Styling */
 #logo {
-    height: 50px; /* Adjust the height as needed; the width will scale proportionally */
-    margin-right: 15px; /* Space between the logo and the title or other content */
-    vertical-align: middle; /* Aligns the logo with the middle of adjacent inline or inline-block elements */
+    height: 50px;
+    margin-right: 15px;
+    vertical-align: middle;
 }
 
 .header {
     display: flex;
-    align-items: center; /* Centers items vertically within the header */
-    justify-content: center; /* Centers items horizontally within the header container */
+    align-items: center;
+    justify-content: center;
     text-align: center;
 }
 
+/* Body and Search Container Styling */
 body {
     font-family: Arial, sans-serif;
     padding: 20px;
-    background-color: #f4f4f4;
+    background: linear-gradient(to bottom, #e0f7fa, #f4f4f4);
 }
 
 .search-container {
@@ -36,24 +35,25 @@ body {
     margin-top: 10px;
     font-size: 17px;
     border: 1px solid #ddd;
+    border-radius: 5px;
 }
 
+/* Directory Container Styling */
 .directory-container {
     margin: auto;
     width: 90%;
-    max-width: 1000px; /* Increased max-width */
-    background-color: #e7e4e4;
+    max-width: 1000px;
+    background-color: #ffffff;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.directory-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    border-radius: 10px;
 }
 
+/* Responsive Media Queries */
 @media (max-width: 600px) {
     body {
         padding: 10px;
@@ -68,10 +68,7 @@ body {
     }
 }
 
-h1 {
-    text-align: center;
-}
-
+/* Table Styling */
 table.directory {
     width: 100%;
     border-collapse: collapse;
@@ -85,17 +82,19 @@ table.directory, th, td {
 th, td {
     text-align: left;
     padding: 8px;
-    white-space: nowrap; /* Prevent text wrapping */
+    white-space: nowrap;
 }
 
 th {
-    background-color: #f2f2f2;
+    background-color: #bbdefb;
+    color: #0d47a1;
 }
 
 tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: #e3f2fd;
 }
 
+/* Responsive Table Styling */
 @media screen and (max-width: 600px) {
     th, td {
         display: block;
@@ -126,6 +125,7 @@ tr:nth-child(even) {
         font-weight: bold;
         text-align: left;
     }
+
     @media (max-width: 768px) {
         .directory thead tr {
             display: none;
@@ -167,6 +167,7 @@ tr:nth-child(even) {
     }
 }
 
+/* Footer and Button Styling */
 .footer {
     text-align: center;
     margin-top: 20px;
