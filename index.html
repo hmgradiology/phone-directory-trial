@@ -7,9 +7,9 @@
 <link rel="stylesheet" href="styles.css">
 <style>
   body {
-    font-family: 'Orbitron', sans-serif; /* استخدام خط مستقبلي */
-    background: linear-gradient(135deg, #0d1b2a, #1b263b, #415a77); /* خلفية متدرجة بالألوان الداكنة */
-    color: #e0f7fa; /* لون النص */
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f8ff; /* خلفية بيضاء فاتحة */
+    color: #333; /* لون النص */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -19,17 +19,14 @@
   }
   .main-container {
     text-align: center;
-    background: rgba(0, 0, 0, 0.6); /* خلفية نصف شفافة داكنة */
+    background-color: #fff; /* خلفية بيضاء */
     padding: 50px;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5); /* ظل قوي */
-    border-radius: 15px; /* زوايا دائرية أكبر */
-    backdrop-filter: blur(10px); /* تأثير ضبابي للخلفية */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* ظل خفيف */
+    border-radius: 10px; /* زوايا دائرية */
   }
   .main-container h1 {
     margin-bottom: 40px;
-    font-size: 2.5em; /* تكبير حجم الخط */
-    color: #64ffda; /* لون نص مستقبلي */
-    text-shadow: 0 0 10px #64ffda; /* تأثير ظل متوهج */
+    color: #007acc; /* لون أزرق فاتح */
   }
   .button {
     display: inline-block;
@@ -37,29 +34,27 @@
     font-size: 18px;
     margin: 10px;
     color: #fff; /* لون النص */
-    background: linear-gradient(135deg, #64ffda, #00bfa5); /* خلفية متدرجة زاهية */
+    background-color: #007acc; /* لون الخلفية */
     border: none;
     border-radius: 5px;
     cursor: pointer;
     text-decoration: none;
-    transition: background 0.3s ease, box-shadow 0.3s ease; /* تأثير انتقال للخلفية والظل */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* تأثيرات انتقال للخلفية والظل */
     width: 300px; /* تحديد عرض ثابت للأزرار */
     text-align: center; /* توسيط النص داخل الزر */
-    box-shadow: 0 0 15px rgba(100, 255, 218, 0.5); /* تأثير ظل متوهج */
+    box-shadow: 0 0 15px rgba(0, 122, 204, 0.5); /* تأثير ظل خفيف */
   }
   .button:hover {
-    background: linear-gradient(135deg, #00bfa5, #64ffda); /* تبديل التدرج عند التمرير */
-    box-shadow: 0 0 25px rgba(100, 255, 218, 0.8); /* تكبير الظل المتوهج */
+    background-color: #005f99; /* تغيير لون الخلفية عند التمرير */
+    box-shadow: 0 0 25px rgba(0, 122, 204, 0.8); /* تكبير الظل عند التمرير */
   }
   .footer {
     text-align: center;
     margin-top: 20px;
     font-size: 14px;
-    color: #64ffda; /* لون النص المستقبلي */
-    text-shadow: 0 0 5px #64ffda; /* تأثير ظل متوهج */
+    color: #777; /* لون النص الفاتح */
   }
 </style>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
 <div class="main-container">
