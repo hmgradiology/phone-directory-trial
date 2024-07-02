@@ -1,51 +1,17 @@
-/* General Element Styling */
-.element {
-    padding: 10px;
-    height: 100vh;
-    height: calc(var(--vh, 1vh) * 100);
-}
-
-/* Logo and Header Styling */
-#logo {
-    height: 50px;
-    margin-right: 15px;
-    vertical-align: middle;
-}
-
-.header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-/* Body and Search Container Styling */
 body {
     font-family: Arial, sans-serif;
     padding: 20px;
-    background: linear-gradient(to bottom, #e0f7fa, #f4f4f4);
+    background-color: #333;
+    color: #fff;
 }
 
-.search-container {
-    margin-bottom: 20px;
-}
-
-#searchInput {
-    padding: 10px;
-    margin-top: 10px;
-    font-size: 17px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-/* Directory Container Styling */
 .directory-container {
     margin: auto;
     width: 90%;
     max-width: 1000px;
-    background-color: #ffffff;
+    background-color: #444;
     padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -53,147 +19,24 @@ body {
     border-radius: 10px;
 }
 
-/* Responsive Media Queries */
-@media (max-width: 600px) {
-    body {
-        padding: 10px;
-    }
-
-    .directory-container {
-        width: 100%;
-    }
-
-    table.directory, th, td {
-        font-size: 14px;
-    }
-}
-
-/* Table Styling */
-table.directory {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
 table.directory, th, td {
-    border: 1px solid #ddd;
-}
-
-th, td {
-    text-align: left;
-    padding: 8px;
-    white-space: nowrap;
+    border: 1px solid #555;
 }
 
 th {
-    background-color: #bbdefb;
-    color: #0d47a1;
+    background-color: #555;
+    color: #ffeb3b;
 }
 
 tr:nth-child(even) {
-    background-color: #e3f2fd;
-}
-
-/* Responsive Table Styling */
-@media screen and (max-width: 600px) {
-    th, td {
-        display: block;
-        width: 100%;
-    }
-    th {
-        position: absolute;
-        top: -9999px;
-        left: -9999px;
-    }
-    tr {
-        border-bottom: 1px solid #ddd;
-        display: block;
-        margin-bottom: 10px;
-    }
-    td {
-        border: none;
-        position: relative;
-        padding-left: 50%;
-        text-align: right;
-    }
-    td:before {
-        content: attr(data-label);
-        position: absolute;
-        left: 0;
-        width: 45%;
-        padding-left: 15px;
-        font-weight: bold;
-        text-align: left;
-    }
-
-    @media (max-width: 768px) {
-        .directory thead tr {
-            display: none;
-        }
-    
-        .directory tbody tr {
-            display: block;
-            margin-bottom: 15px;
-            padding: 10px;
-            border: none;
-            background-color: #fff;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-    
-        .directory tbody tr td {
-            display: block;
-            text-align: left;
-            font-size: 14px;
-            border-bottom: 1px solid #ececec;
-            position: relative;
-            padding: 8px 0;
-            padding-left: 35%;
-        }
-    
-        .directory td:before {
-            content: attr(data-label);
-            position: absolute;
-            left: 10px;
-            width: 25%;
-            padding-right: 10px;
-            font-weight: normal;
-            color: #666;
-            text-transform: uppercase;
-            font-size: 12px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-    }
-}
-
-/* Footer and Button Styling */
-.footer {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 14px;
-    color: #666;
-}
-
-.back-button-container {
-    text-align: center;
-    margin-top: 20px;
+    background-color: #666;
 }
 
 .button {
-    display: inline-block;
-    padding: 15px 30px;
-    font-size: 18px;
-    margin: 10px;
-    color: white;
-    background-color: #007bff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
+    color: #fff;
+    background-color: #ffeb3b;
 }
 
 .button:hover {
-    background-color: #0056b3;
+    background-color: #ffd600;
 }
