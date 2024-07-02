@@ -1,21 +1,30 @@
-body {
-    font-family: Arial, sans-serif;
-    padding: 20px;
-    background-color: #f4f4f4;
+/* This style will apply to all browsers */
+.element {
+    padding: 10px;
+}
+
+.element {
+    height: 100vh; /* Fallback for browsers that do not support environment variables */
+    height: calc(var(--vh, 1vh) * 100);
+}
+
+#logo {
+    height: 50px; /* Adjust the height as needed; the width will scale proportionally */
+    margin-right: 15px; /* Space between the logo and the title or other content */
+    vertical-align: middle; /* Aligns the logo with the middle of adjacent inline or inline-block elements */
 }
 
 .header {
     display: flex;
-    align-items: center; 
-    justify-content: center; 
+    align-items: center; /* Centers items vertically within the header */
+    justify-content: center; /* Centers items horizontally within the header container */
     text-align: center;
-    background-color: #ffffff; /* لون خلفية الشعار */
 }
 
-.header img {
-    height: 50px; 
-    margin-right: 15px; 
-    vertical-align: middle;
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #f4f4f4;
 }
 
 .search-container {
@@ -32,15 +41,35 @@ body {
 .directory-container {
     margin: auto;
     width: 90%;
-    max-width: 1000px; 
-    background-color: #ffffff; /* خلفية بيضاء للجداول */
+    max-width: 1000px; /* Increased max-width */
+    background-color: #e7e4e4;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.directory-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    .directory-container {
+        width: 100%;
+    }
+
+    table.directory, th, td {
+        font-size: 14px;
+    }
+}
+
 h1 {
     text-align: center;
-    color: #e60000; /* لون نص العنوان مطابق للون الشعار */
 }
 
 table.directory {
@@ -56,16 +85,86 @@ table.directory, th, td {
 th, td {
     text-align: left;
     padding: 8px;
-    white-space: nowrap; 
+    white-space: nowrap; /* Prevent text wrapping */
 }
 
 th {
-    background-color: #e60000; /* لون خلفية رأس الجدول مطابق للون الشعار */
-    color: #ffffff; /* لون النص أبيض */
+    background-color: #f2f2f2;
 }
 
 tr:nth-child(even) {
     background-color: #f9f9f9;
+}
+
+@media screen and (max-width: 600px) {
+    th, td {
+        display: block;
+        width: 100%;
+    }
+    th {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    tr {
+        border-bottom: 1px solid #ddd;
+        display: block;
+        margin-bottom: 10px;
+    }
+    td {
+        border: none;
+        position: relative;
+        padding-left: 50%;
+        text-align: right;
+    }
+    td:before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 45%;
+        padding-left: 15px;
+        font-weight: bold;
+        text-align: left;
+    }
+    @media (max-width: 768px) {
+        .directory thead tr {
+            display: none;
+        }
+    
+        .directory tbody tr {
+            display: block;
+            margin-bottom: 15px;
+            padding: 10px;
+            border: none;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+    
+        .directory tbody tr td {
+            display: block;
+            text-align: left;
+            font-size: 14px;
+            border-bottom: 1px solid #ececec;
+            position: relative;
+            padding: 8px 0;
+            padding-left: 35%;
+        }
+    
+        .directory td:before {
+            content: attr(data-label);
+            position: absolute;
+            left: 10px;
+            width: 25%;
+            padding-right: 10px;
+            font-weight: normal;
+            color: #666;
+            text-transform: uppercase;
+            font-size: 12px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
 }
 
 .footer {
@@ -86,7 +185,7 @@ tr:nth-child(even) {
     font-size: 18px;
     margin: 10px;
     color: white;
-    background-color: #e60000; /* لون خلفية الأزرار مطابق للون الشعار */
+    background-color: #007bff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -95,5 +194,5 @@ tr:nth-child(even) {
 }
 
 .button:hover {
-    background-color: #b30000; /* لون خلفية الأزرار عند التمرير */
+    background-color: #0056b3;
 }
