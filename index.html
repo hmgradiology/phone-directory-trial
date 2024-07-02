@@ -1,24 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main Page</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Main Page</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  .main-container {
+    text-align: center;
+    background-color: #fff;
+    padding: 50px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+  .main-container h1 {
+    margin-bottom: 40px;
+  }
+  .button {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 18px;
+    margin: 10px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    width: 300px; /* تحديد عرض ثابت للأزرار */
+    text-align: center; /* توسيط النص داخل الزر */
+  }
+  .button:hover {
+    background-color: #0056b3;
+  }
+  .footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #666;
+  }
+</style>
 </head>
 <body>
-    <div class="header">
-        <img src="logo.png" alt="Company Logo" id="logo">
-        <h1>Radiology Department</h1>
-    </div>
-    <div class="main-container">
-        <h1>Welcome to Radiology Department</h1>
-        <a href="radiology-consultant-contact.html" class="button">Radiology Consultant Contact</a>
-        <a href="radiology-specialist-contact.html" class="button">Radiology Specialist Contact</a>
-        <a href="radiology-extensions.html" class="button">Radiology Extensions</a>
-    </div>
-    <div class="footer">
-        &copy; 2024 Abdullah AlQarni. All rights reserved.
-    </div>
+<div class="main-container">
+  <h1>Welcome to Radiology Department</h1>
+  
+  <a href="radiology-consultant-contact.html" class="button">Radiology Consultant Contact</a>
+  <a href="radiology-specialist-contact.html" class="button">Radiology Specialist Contact</a>
+  <a href="radiology-extensions.html" class="button">Radiology Extensions</a>
+</div>
+<div class="footer">
+  &copy; 2024 Abdullah AlQarni. All rights reserved.
+</div>
 </body>
 </html>
