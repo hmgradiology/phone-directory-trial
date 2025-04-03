@@ -7,88 +7,6 @@
   <link rel="stylesheet" href="style.css">
   <style>
     /* إزالة الشيفرة الخاصة بالزر هنا */
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
-    .header {
-      background-color: #f2f2f2;
-      padding: 20px;
-      text-align: center;
-    }
-    #logo {
-      max-width: 100%;
-      height: auto;
-    }
-    .directory-container {
-      padding: 20px;
-      overflow-x: auto;
-    }
-    .search-container {
-      margin-bottom: 20px;
-    }
-    .search-container label {
-      font-weight: bold;
-    }
-    .search-container input {
-      padding: 8px;
-      width: 100%;
-      max-width: 400px;
-      margin-top: 8px;
-      box-sizing: border-box;
-    }
-    .directory {
-      width: 100%;
-      border-collapse: collapse;
-    }
-    .directory th,
-    .directory td {
-      padding: 12px;
-      border: 1px solid #ddd;
-      text-align: left;
-    }
-    .back-button-container {
-      margin: 20px;
-      text-align: center;
-    }
-    .back-button-container a.button {
-      display: inline-block;
-      padding: 10px 20px;
-      background-color: #007BFF;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 4px;
-    }
-    .footer {
-      background-color: #f2f2f2;
-      padding: 10px;
-      text-align: center;
-    }
-    /* Responsive Styles */
-    @media screen and (max-width: 768px) {
-      .directory th,
-      .directory td {
-        padding: 8px;
-      }
-    }
-    @media screen and (max-width: 480px) {
-      .header h1 {
-        font-size: 1.5em;
-      }
-      .search-container label,
-      .search-container input {
-        width: 100%;
-        text-align: center;
-      }
-      .directory th,
-      .directory td {
-        font-size: 0.9em;
-      }
-      .back-button-container a.button {
-        padding: 8px 16px;
-      }
-    }
   </style>
 </head>
 <body>
@@ -538,6 +456,7 @@
       filter = input.value.toUpperCase();
       table = document.querySelector(".directory");
       tr = table.getElementsByTagName("tr");
+
       for (i = 0; i < tr.length; i++) {
         td = tr[i].getElementsByTagName("td");
         if (td) {
@@ -549,7 +468,11 @@
               break;
             }
           }
-          tr[i].style.display = match ? "" : "none";
+          if (match) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
         }
       }
     }
