@@ -7,6 +7,163 @@
   <link rel="stylesheet" href="style.css">
   <style>
     /* إزالة الشيفرة الخاصة بالزر هنا */
+    /* بداية التنسيقات المحدثة لجعل الصفحة متوافقة مع جميع الشاشات وبشكل احترافي */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #E6FAF7;
+      color: #333;
+    }
+
+    .header {
+      background-color: #B8EAE2;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    #logo {
+      width: 50px;
+      height: auto;
+      margin-right: 1rem;
+    }
+
+    .header h1 {
+      font-size: 1.5rem;
+      color: #0F5D5B;
+    }
+
+    .directory-container {
+      max-width: 1100px;
+      margin: 2rem auto;
+      background-color: #FFFFFF;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .search-container {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .search-container label {
+      font-weight: bold;
+      color: #0F5D5B;
+    }
+
+    #searchInput {
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+      max-width: 300px;
+    }
+
+    .directory {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 2rem;
+    }
+
+    .directory thead {
+      background-color: #E6FAF7;
+    }
+
+    .directory thead th {
+      font-weight: bold;
+      text-align: left;
+      color: #0F5D5B;
+      padding: 0.75rem;
+      border-bottom: 2px solid #ccc;
+    }
+
+    .directory tbody tr {
+      border-bottom: 1px solid #eee;
+    }
+
+    .directory td {
+      padding: 0.75rem;
+    }
+
+    .directory td[data-label] {
+      color: #333;
+    }
+
+    /* تنسيق الخلايا وفقًا للتسمية */
+    .directory td[data-label="Doctor's Name"] {
+      font-weight: bold;
+      color: #0F5D5B;
+    }
+
+    /* جعل التصميم متجاوبًا عبر الشاشات */
+    @media screen and (max-width: 768px) {
+      .directory thead {
+        display: none;
+      }
+      .directory,
+      .directory tbody,
+      .directory tr,
+      .directory td {
+        display: block;
+        width: 100%;
+      }
+      .directory tr {
+        margin-bottom: 1rem;
+        border-bottom: 2px solid #ddd;
+        padding-bottom: 1rem;
+      }
+      .directory td {
+        text-align: left;
+        position: relative;
+        padding-left: 40%;
+        margin-bottom: 0.5rem;
+        border-bottom: none;
+      }
+      .directory td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 1rem;
+        font-weight: bold;
+        color: #0F5D5B;
+      }
+    }
+
+    .back-button-container {
+      text-align: center;
+      margin: 2rem 0;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 1rem;
+      color: #FFF;
+      background-color: #0F5D5B;
+      transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #0b4644;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 1rem 0;
+      font-size: 0.9rem;
+      color: #666;
+    }
+    /* نهاية التنسيقات المحدثة */
   </style>
 </head>
 <body>
@@ -14,11 +171,13 @@
     <img src="logo.png" alt="Company Logo" id="logo">
     <h1>Radiology Consultant Contact</h1>
   </div>
+
   <div class="directory-container">
     <div class="search-container">
       <label for="searchInput">Search:</label>
       <input type="text" id="searchInput" onkeyup="searchDirectory()" placeholder="Names, ID, or Branch">
     </div>
+
     <table class="directory">
       <thead>
         <tr>
@@ -443,12 +602,15 @@
       </tbody>
     </table>
   </div>
+
   <div class="back-button-container">
     <a href="index.html" class="button">Back</a>
   </div>
+
   <div class="footer">
     &copy; 2025 Abdullah AlQarni. All rights reserved.
   </div>
+
   <script>
     function searchDirectory() {
       var input, filter, table, tr, td, i, txtValue;
