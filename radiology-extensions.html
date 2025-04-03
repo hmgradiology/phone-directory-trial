@@ -1,523 +1,702 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Radiology Extensions</title>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-<div class="header">
-  <img src="logo.png" alt="Company Logo" id="logo">
-  <h1>Radiology Extensions</h1>
-</div>
-<div class="directory-container">
-  <div class="search-container">
-    <label for="searchInput">Search:</label>
-    <input type="text" id="searchInput" onkeyup="searchDirectory()" placeholder="Search for names..">
-  </div>
-  <table class="directory">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Branch code</th>
-        <th>Branch name</th>
-        <th>Ext</th>
-      </tr>
-    </thead>
-    <tbody>
-<!-- Corporate Radiology -->
-<tr>
-  <td data-label="Name">Dr. Nasser Al Dossary<br>Corporate Director</td>
-  <td data-label="Branch code">8880</td>
-  <td data-label="Branch name">Corporate Radiology</td>
-  <td data-label="Ext">4375</td>
-</tr>
-<tr>
-  <td data-label="Name">Mohammad AlDabass<br>Corporate RSO</td>
-  <td data-label="Branch code">8880</td>
-  <td data-label="Branch name">Corporate Radiology</td>
-  <td data-label="Ext">4382</td>
-</tr>
-<tr>
-  <td data-label="Name">Mohammed Shahnawaz<br>Corporate Secretary</td>
-  <td data-label="Branch code">8880</td>
-  <td data-label="Branch name">Corporate Radiology</td>
-  <td data-label="Ext">4374</td>
-</tr>
-<tr>
-  <td data-label="Name">Allyn Leigh/Juciel Amper</td>
-  <td data-label="Branch code">8880</td>
-  <td data-label="Branch name">Corporate Radiology</td>
-  <td data-label="Ext">4383</td>
-</tr>
-      <!-- OLAYA -->
-      <tr>
-        <td data-label="Name">Dr. Amneh Abdullah (HOD)</td>
-        <td data-label="Branch code">8880</td>
-        <td data-label="Branch name">OLAYA</td>
-        <td data-label="Ext">1133/1134</td>
-      </tr>
-      <tr>
-        <td data-label="Name">Chief Tech/Supervisor</td>
-        <td data-label="Branch code">8880</td>
-        <td data-label="Branch name">OLAYA</td>
-        <td data-label="Ext">1153/1132</td>
-      </tr>
-      <tr>
-        <td data-label="Name">Reporting Room HMC 1</td>
-        <td data-label="Branch code">8880</td>
-        <td data-label="Branch name">OLAYA</td>
-        <td data-label="Ext">1135/1037/1045</td>
-      </tr>
-      <tr>
-        <td data-label="Name">Reporting Room OSSH</td>
-        <td data-label="Branch code">8880</td>
-        <td data-label="Branch name">OLAYA</td>
-        <td data-label="Ext">4030, 4034, 4035</td>
-      </tr>
-      <tr>
-        <td data-label="Name">MRI Close</td>
-        <td data-label="Branch code">8880</td>
-        <td data-label="Branch name">OLAYA</td>
-        <td data-label="Ext">1041</td>
-      </tr>
-      <tr>
-        <td data-label="Name">MRI Open</td>
-        <td data-label="Branch code">8880</td>
-        <td data-label="Branch name">OLAYA</td>
-        <td data-label="Ext">1038</td>
-      </tr>
-      <tr>
-        <td data-label="Name">MRI IVF</td>
-        <td data-label="Branch code">8880</td>
-        <td data-label="Branch name">OLAYA</td>
-        <td data-label="Ext">5011</td>
-      </tr>
-      <tr>
-        <td data-label="Name">MRI OSSH</td>
-        <td data-label="Branch code">8880</td>
-        <td data-label="Branch name">OLAYA</td>
-        <td data-label="Ext">4063</td>
-      </tr>
-      <tr>
-        <td data-label="Name">CT OSSH</td>
-        <td data-label="Branch code">8880</td>
-        <td data-label="Branch name">OLAYA</td>
-        <td data-label="Ext">4036</td>
-      </tr>
-      <tr>
-        <td data-label="Name">CT HMC 1</td>
-        <td data-label="Branch code">8880</td>
-        <td data-label="Branch name">OLAYA</td>
-        <td data-label="Ext">1026</td>
-      </tr>
-      <tr>
-        <td data-label="Name">X-Ray HMC 1</td>
-        <td data-label="Branch code">8880</td>
-        <td data-label="Branch name">OLAYA</td>
-        <td data-label="Ext">1136</td>
-      </tr>
-      <tr>
-        <td data-label="Name">X-Ray 4th Floor</td>
-        <td data-label="Branch code">8880</td>
-        <td data-label="Branch name">OLAYA</td>
-        <td data-label="Ext">2415</td>
-      </tr>
-      <tr>
-        <td data-label="Name">Mammo HMC 1</td>
-        <td data-label="Branch code">8880</td>
-        <td data-label="Branch name">OLAYA</td>
-        <td data-label="Ext">1042</td>
-      </tr>
-      <!-- QASSIM -->
-      <tr>
-        <td data-label="Name">Dr. Sanam Soomro (HOD)</td>
-        <td data-label="Branch code">8882</td>
-        <td data-label="Branch name">QASSIM</td>
-        <td data-label="Ext">6702</td>
-      </tr>
-      <tr>
-        <td data-label="Name">Chief Tech</td>
-        <td data-label="Branch code">8882</td>
-        <td data-label="Branch name">QASSIM</td>
-        <td data-label="Ext">6090</td>
-      </tr>
-      <tr>
-        <td data-label="Name">Reporting Room</td>
-        <td data-label="Branch code">8882</td>
-        <td data-label="Branch name">QASSIM</td>
-        <td data-label="Ext">6069</td>
-      </tr>
-      <tr>
-        <td data-label="Name">MRI/CT</td>
-        <td data-label="Branch code">8882</td>
-        <td data-label="Branch name">QASSIM</td>
-        <td data-label="Ext">6593</td>
-      </tr>
-      <tr>
-        <td data-label="Name">X-Ray</td>
-        <td data-label="Branch code">8882</td>
-        <td data-label="Branch name">QASSIM</td>
-        <td data-label="Ext">6097</td>
-      </tr>
-      <tr>
-        <td data-label="Name">X-Ray ASCOM</td>
-        <td data-label="Branch code">8882</td>
-        <td data-label="Branch name">QASSIM</td>
-        <td data-label="Ext">6180</td>
-      </tr>
-      <!-- RAYYAN -->
-      <tr>
-        <td data-label="Name">Dr. Khalid Rasheed Hameed (HOD)</td>
-        <td data-label="Branch code">8883</td>
-        <td data-label="Branch name">RAYYAN</td>
-        <td data-label="Ext">9851</td>
-      </tr>
-      <tr>
-        <td data-label="Name">Chief Tech/Supervisor</td>
-        <td data-label="Branch code">8883</td>
-        <td data-label="Branch name">RAYYAN</td>
-        <td data-label="Ext">9864</td>
-      </tr>
-      <tr>
-        <td data-label="Name">Dr. Ammad Farooq</td>
-        <td data-label="Branch code">8883</td>
-        <td data-label="Branch name">RAYYAN</td>
-        <td data-label="Ext">9857</td>
-      </tr>
-      <tr>
-        <td data-label="Name">Reporting Room</td>
-        <td data-label="Branch code">8883</td>
-        <td data-label="Branch name">RAYYAN</td>
-        <td data-label="Ext">9855/9852/9859/9856<br>103056/103057/103058/103059<br>103060/103061/103062/103063</td>
-      </tr>
-      <tr>
-        <td data-label="Name">MRI 1 & 2</td>
-        <td data-label="Branch code">8883</td>
-        <td data-label="Branch name">RAYYAN</td>
-        <td data-label="Ext">9863</td>
-      </tr>
-      <tr>
-        <td data-label="Name">MRI 3</td>
-        <td data-label="Branch code">8883</td>
-        <td data-label="Branch name">RAYYAN</td>
-        <td data-label="Ext">5575</td>
-      </tr>
-      <tr>
-        <td data-label="Name">CT</td>
-        <td data-label="Branch code">8883</td>
-        <td data-label="Branch name">RAYYAN</td>
-        <td data-label="Ext">3801</td>
-      </tr>
-      <tr>
-        <td data-label="Name">X-Ray</td>
-        <td data-label="Branch code">8883</td>
-        <td data-label="Branch name">RAYYAN</td>
-        <td data-label="Ext">9862</td>
-      </tr>
-      <!-- TAKHASUSSI -->
-      <tr>
-        <td data-label="Name">Dr. Ehab Aboelfotouh (HOD)</td>
-        <td data-label="Branch code">8884</td>
-        <td data-label="Branch name">TAKHASUSSI</td>
-        <td data-label="Ext">3746</td>
-      </tr>
-      <tr>
-        <td data-label="Name">Chief Tech/Supervisor</td>
-        <td data-label="Branch code">8884</td>
-        <td data-label="Branch name">TAKHASUSSI</td>
-        <td data-label="Ext">3370/3375</td>
-      </tr>
-      <tr>
-        <td data-label="Name">Reporting Room</td>
-        <td data-label="Branch code">8884</td>
-        <td data-label="Branch name">TAKHASUSSI</td>
-        <td data-label="Ext">3748/3752/3753/3750<br>3754/3755/3756/3757<br>3758/3759/3760/3761</td>
-      </tr>
-      <tr>
-        <td data-label="Name">MRI</td>
-        <td data-label="Branch code">8884</td>
-        <td data-label="Branch name">TAKHASUSSI</td>
-        <td data-label="Ext">3761</td>
-      </tr>
-      <tr>
-        <td data-label="Name">CT</td>
-        <td data-label="Branch code">8884</td>
-        <td data-label="Branch name">TAKHASUSSI</td>
-        <td data-label="Ext">5154</td>
-      </tr>
-      <tr>
-        <td data-label="Name">PET CT</td>
-        <td data-label="Branch code">8884</td>
-        <td data-label="Branch name">TAKHASUSSI</td>
-        <td data-label="Ext">3765</td>
-      </tr>
-      <tr>
-        <td data-label="Name">TAK Nuclear Medicine</td>
-        <td data-label="Branch code">8884</td>
-        <td data-label="Branch name">TAKHASUSSI</td>
-        <td data-label="Ext">5165/3758</td>
-      </tr>
-      <tr>
-        <td data-label="Name">Nuclear Medicine Coordinator</td>
-        <td data-label="Branch code">8884</td>
-        <td data-label="Branch name">TAKHASUSSI</td>
-        <td data-label="Ext">3771</td>
-      </tr>
-      <tr>
-        <td data-label="Name">X-Ray</td>
-        <td data-label="Branch code">8884</td>
-        <td data-label="Branch name">TAKHASUSSI</td>
-        <td data-label="Ext">3763</td>
-      </tr>
-      <!-- SUWAIDI -->
-      <tr>
-        <td data-label="Name">Dr. Yousef Rabea (HOD)</td>
-        <td data-label="Branch code">8886</td>
-        <td data-label="Branch name">SUWAIDI</td>
-        <td data-label="Ext">3653</td>
-      </tr>
-      <tr>
-        <td data-label="Name">Chief Tech/Supervisor</td>
-        <td data-label="Branch code">8886</td>
-        <td data-label="Branch name">SUWAIDI</td>
-        <td data-label="Ext">3645</td>
-      </tr>
-      <tr>
-        <td data-label="Name">Reporting Room</td>
-        <td data-label="Branch code">8886</td>
-        <td data-label="Branch name">SUWAIDI</td>
-        <td data-label="Ext">3658/3657/3656/3654<br>3655/3656/3657/3658<br>3659/3660/3661/3662</td>
-      </tr>
-      <tr>
-        <td data-label="Name">MRI</td>
-        <td data-label="Branch code">8886</td>
-        <td data-label="Branch name">SUWAIDI</td>
-        <td data-label="Ext">3652</td>
-      </tr>
-      <tr>
-        <td data-label="Name">CT</td>
-        <td data-label="Branch code">8886</td>
-        <td data-label="Branch name">SUWAIDI</td>
-        <td data-label="Ext">3640</td>
-      </tr>
-      <tr>
-        <td data-label="Name">X-Ray 1 & 2</td>
-        <td data-label="Branch code">8886</td>
-        <td data-label="Branch name">SUWAIDI</td>
-        <td data-label="Ext">3638</td>
-      </tr>
-      <!-- KHOBAR -->
-      <tr>
-        <td data-label="Name">Dr. Hisham Al Dossary (HOD)</td>
-        <td data-label="Branch code">8888</td>
-        <td data-label="Branch name">KHOBAR</td>
-        <td data-label="Ext">2437</td>
-      </tr>
-      <tr>
-        <td data-label="Name">Chief Tech/Supervisor</td>
-        <td data-label="Branch code">8888</td>
-        <td data-label="Branch name">KHOBAR</td>
-        <td data-label="Ext">1057</td>
-      </tr>
-      <tr>
-        <td data-label="Name">Reporting Room</td>
-        <td data-label="Branch code">8888</td>
-        <td data-label="Branch name">KHOBAR</td>
-        <td data-label="Ext">1757</td>
-      </tr>
-      <tr>
-        <td data-label="Name">MRI</td>
-        <td data-label="Branch code">8888</td>
-        <td data-label="Branch name">KHOBAR</td>
-        <td data-label="Ext">1054</td>
-      </tr>
-      <tr>
-        <td data-label="Name">CT</td>
-        <td data-label="Branch code">8888</td>
-        <td data-label="Branch name">KHOBAR</td>
-        <td data-label="Ext">2045</td>
-      </tr>
-      <tr>
-        <td data-label="Name">X-Ray 1</td>
-        <td data-label="Branch code">8888</td>
-        <td data-label="Branch name">KHOBAR</td>
-        <td data-label="Ext">1052</td>
-      </tr>
-      <tr>
-        <td data-label="Name">X-Ray 2</td>
-        <td data-label="Branch code">8888</td>
-        <td data-label="Branch name">KHOBAR</td>
-        <td data-label="Ext">1053</td>
-      </tr>
-      <tr>
-        <td data-label="Name">X-Ray ASCOM</td>
-        <td data-label="Branch code">8888</td>
-        <td data-label="Branch name">KHOBAR</td>
-        <td data-label="Ext">1877</td>
-      </tr>
-      <!-- JEDDAH - FAYHA -->
-      <tr>
-        <td data-label="Name">Dr. Ahmed Abukwaik (HOD)</td>
-        <td data-label="Branch code">202081</td>
-        <td data-label="Branch name">JEDDAH - FAYHA</td>
-        <td data-label="Ext">202081</td>
-      </tr>
-      <tr>
-        <td data-label="Name">Chief Tech/Supervisor</td>
-        <td data-label="Branch code">202090</td>
-        <td data-label="Branch name">JEDDAH - FAYHA</td>
-        <td data-label="Ext">202090</td>
-      </tr>
-      <tr>
-        <td data-label="Name">Reporting Room</td>
-        <td data-label="Branch code">202087</td>
-        <td data-label="Branch name">JEDDAH - FAYHA</td>
-        <td data-label="Ext">202087</td>
-      </tr>
-      <tr>
-        <td data-label="Name">MRI</td>
-        <td data-label="Branch code">202093</td>
-        <td data-label="Branch name">JEDDAH - FAYHA</td>
-        <td data-label="Ext">202093</td>
-      </tr>
-      <tr>
-        <td data-label="Name">CT</td>
-        <td data-label="Branch code">202086</td>
-        <td data-label="Branch name">JEDDAH - FAYHA</td>
-        <td data-label="Ext">202086</td>
-      </tr>
-      <tr>
-        <td data-label="Name">U/S</td>
-        <td data-label="Branch code">202084</td>
-        <td data-label="Branch name">JEDDAH - FAYHA</td>
-        <td data-label="Ext">202084</td>
-      </tr>
-      <tr>
-        <td data-label="Name">X-Ray 1</td>
-        <td data-label="Branch code">202092</td>
-        <td data-label="Branch name">JEDDAH - FAYHA</td>
-        <td data-label="Ext">202092</td>
-      </tr>
-      <tr>
-        <td data-label="Name">X-Ray 2</td>
-        <td data-label="Branch code">202089</td>
-        <td data-label="Branch name">JEDDAH - FAYHA</td>
-        <td data-label="Ext">202089</td>
-      </tr>
-      <!-- SAHAFA -->
-      <tr>
-        <td data-label="Name">Dr. Ishaq Uri (HOD)</td>
-        <td data-label="Branch code">103053</td>
-        <td data-label="Branch name">SAHAFA</td>
-        <td data-label="Ext">103053</td>
-      </tr>
-      <tr>
-        <td data-label="Name">Chief Tech/Supervisor</td>
-        <td data-label="Branch code">103055</td>
-        <td data-label="Branch name">SAHAFA</td>
-        <td data-label="Ext">103055</td>
-      </tr>
-      <tr>
-        <td data-label="Name">Reporting Room</td>
-        <td data-label="Branch code">103054</td>
-        <td data-label="Branch name">SAHAFA</td>
-        <td data-label="Ext">103054/103057/103058/103077<br>103078/103079</td>
-      </tr>
-      <tr>
-        <td data-label="Name">MRI</td>
-        <td data-label="Branch code">103060</td>
-        <td data-label="Branch name">SAHAFA</td>
-        <td data-label="Ext">103060</td>
-      </tr>
-      <tr>
-        <td data-label="Name">CT</td>
-        <td data-label="Branch code">103059</td>
-        <td data-label="Branch name">SAHAFA</td>
-        <td data-label="Ext">103059</td>
-      </tr>
-      <tr>
-        <td data-label="Name">U/S</td>
-        <td data-label="Branch code">106064</td>
-        <td data-label="Branch name">SAHAFA</td>
-        <td data-label="Ext">106064</td>
-      </tr>
-      <tr>
-        <td data-label="Name">X-Ray</td>
-        <td data-label="Branch code">106063</td>
-        <td data-label="Branch name">SAHAFA</td>
-        <td data-label="Ext">106063</td>
-      </tr>
-      <!-- AL GHADEER (HMC) -->
-      <tr>
-        <td data-label="Name">MRI/CT</td>
-        <td data-label="Branch code">400350</td>
-        <td data-label="Branch name">AL GHADEER (HMC)</td>
-        <td data-label="Ext">400350</td>
-      </tr>
-      <tr>
-        <td data-label="Name">ASCOM</td>
-        <td data-label="Branch code">400542</td>
-        <td data-label="Branch name">AL GHADEER (HMC)</td>
-        <td data-label="Ext">400542</td>
-      </tr>
-      <!-- AL NARJIS (HMC) -->
-      <tr>
-        <td data-label="Name">CT</td>
-        <td data-label="Branch code">400033</td>
-        <td data-label="Branch name">AL NARJIS (HMC)</td>
-        <td data-label="Ext">400033</td>
-      </tr>
-      <tr>
-        <td data-label="Name">ASCOM</td>
-        <td data-label="Branch code">400267</td>
-        <td data-label="Branch name">AL NARJIS (HMC)</td>
-        <td data-label="Ext">400267</td>
-      </tr>
-      <!-- DIPLOMATIC QUARTER (DQ) -->
-      <tr>
-        <td data-label="Name">X-Ray</td>
-        <td data-label="Branch code">8886</td>
-        <td data-label="Branch name">DIPLOMATIC QUARTER (DQ)</td>
-        <td data-label="Ext">6034</td>
-      </tr>
-      <!-- DIGITAL CITY (DC) -->
-      <tr>
-        <td data-label="Name">X-Ray</td>
-        <td data-label="Branch code">40</td>
-        <td data-label="Branch name">DIGITAL CITY (DC)</td>
-        <td data-label="Ext">2115</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-<div class="back-button-container">
-  <a href="index.html" class="button">Back</a>
-</div>
-<div class="footer">
-  &copy; 2024 Abdullah AlQarni. All rights reserved.
-</div>
-<script>
-function searchDirectory() {
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("searchInput");
-  filter = input.value.toUpperCase();
-  table = document.querySelector(".directory");
-  tr = table.getElementsByTagName("tr");
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Radiology Extensions</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* بداية التنسيقات المحدثة لجعل الصفحة متوافقة مع جميع الشاشات وبشكل احترافي */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0]; // Change to [0] to search by Name
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #E6FAF7;
+      color: #333;
+    }
+
+    .header {
+      background-color: #B8EAE2;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    #logo {
+      width: 50px;
+      height: auto;
+      margin-right: 1rem;
+    }
+
+    .header h1 {
+      font-size: 1.5rem;
+      color: #0F5D5B;
+    }
+
+    .directory-container {
+      max-width: 1100px;
+      margin: 2rem auto;
+      background-color: #FFFFFF;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .search-container {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .search-container label {
+      font-weight: bold;
+      color: #0F5D5B;
+    }
+
+    #searchInput {
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+      max-width: 300px;
+    }
+
+    .directory {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 2rem;
+    }
+
+    .directory thead {
+      background-color: #E6FAF7;
+    }
+
+    .directory thead th {
+      font-weight: bold;
+      text-align: left;
+      color: #0F5D5B;
+      padding: 0.75rem;
+      border-bottom: 2px solid #ccc;
+    }
+
+    .directory tbody tr {
+      border-bottom: 1px solid #eee;
+    }
+
+    .directory td {
+      padding: 0.75rem;
+    }
+
+    .directory td[data-label] {
+      color: #333;
+    }
+
+    /* تنسيق بعض الخلايا */
+    .directory td[data-label="Name"] {
+      font-weight: bold;
+      color: #0F5D5B;
+    }
+
+    /* جعل التصميم متجاوبًا عبر الشاشات */
+    @media screen and (max-width: 768px) {
+      .directory thead {
+        display: none;
+      }
+      .directory,
+      .directory tbody,
+      .directory tr,
+      .directory td {
+        display: block;
+        width: 100%;
+      }
+      .directory tr {
+        margin-bottom: 1rem;
+        border-bottom: 2px solid #ddd;
+        padding-bottom: 1rem;
+      }
+      .directory td {
+        text-align: left;
+        position: relative;
+        padding-left: 40%;
+        margin-bottom: 0.5rem;
+        border-bottom: none;
+      }
+      .directory td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 1rem;
+        font-weight: bold;
+        color: #0F5D5B;
       }
     }
-  }
-}
-</script>
+
+    .back-button-container {
+      text-align: center;
+      margin: 2rem 0;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 1rem;
+      color: #FFF;
+      background-color: #0F5D5B;
+      transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #0b4644;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 1rem 0;
+      font-size: 0.9rem;
+      color: #666;
+    }
+    /* نهاية التنسيقات المحدثة */
+  </style>
+</head>
+<body>
+  <div class="header">
+    <img src="logo.png" alt="Company Logo" id="logo">
+    <h1>Radiology Extensions</h1>
+  </div>
+
+  <div class="directory-container">
+    <div class="search-container">
+      <label for="searchInput">Search:</label>
+      <input type="text" id="searchInput" onkeyup="searchDirectory()" placeholder="Search for names..">
+    </div>
+
+    <table class="directory">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Branch code</th>
+          <th>Branch name</th>
+          <th>Ext</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Corporate Radiology -->
+        <tr>
+          <td data-label="Name">Dr. Nasser Al Dossary<br>Corporate Director</td>
+          <td data-label="Branch code">8880</td>
+          <td data-label="Branch name">Corporate Radiology</td>
+          <td data-label="Ext">4375</td>
+        </tr>
+        <tr>
+          <td data-label="Name">Mohammad AlDabass<br>Corporate RSO</td>
+          <td data-label="Branch code">8880</td>
+          <td data-label="Branch name">Corporate Radiology</td>
+          <td data-label="Ext">4382</td>
+        </tr>
+        <tr>
+          <td data-label="Name">Mohammed Shahnawaz<br>Corporate Secretary</td>
+          <td data-label="Branch code">8880</td>
+          <td data-label="Branch name">Corporate Radiology</td>
+          <td data-label="Ext">4374</td>
+        </tr>
+        <tr>
+          <td data-label="Name">Allyn Leigh/Juciel Amper</td>
+          <td data-label="Branch code">8880</td>
+          <td data-label="Branch name">Corporate Radiology</td>
+          <td data-label="Ext">4383</td>
+        </tr>
+        <!-- OLAYA -->
+        <tr>
+          <td data-label="Name">Dr. Amneh Abdullah (HOD)</td>
+          <td data-label="Branch code">8880</td>
+          <td data-label="Branch name">OLAYA</td>
+          <td data-label="Ext">1133/1134</td>
+        </tr>
+        <tr>
+          <td data-label="Name">Chief Tech/Supervisor</td>
+          <td data-label="Branch code">8880</td>
+          <td data-label="Branch name">OLAYA</td>
+          <td data-label="Ext">1153/1132</td>
+        </tr>
+        <tr>
+          <td data-label="Name">Reporting Room HMC 1</td>
+          <td data-label="Branch code">8880</td>
+          <td data-label="Branch name">OLAYA</td>
+          <td data-label="Ext">1135/1037/1045</td>
+        </tr>
+        <tr>
+          <td data-label="Name">Reporting Room OSSH</td>
+          <td data-label="Branch code">8880</td>
+          <td data-label="Branch name">OLAYA</td>
+          <td data-label="Ext">4030, 4034, 4035</td>
+        </tr>
+        <tr>
+          <td data-label="Name">MRI Close</td>
+          <td data-label="Branch code">8880</td>
+          <td data-label="Branch name">OLAYA</td>
+          <td data-label="Ext">1041</td>
+        </tr>
+        <tr>
+          <td data-label="Name">MRI Open</td>
+          <td data-label="Branch code">8880</td>
+          <td data-label="Branch name">OLAYA</td>
+          <td data-label="Ext">1038</td>
+        </tr>
+        <tr>
+          <td data-label="Name">MRI IVF</td>
+          <td data-label="Branch code">8880</td>
+          <td data-label="Branch name">OLAYA</td>
+          <td data-label="Ext">5011</td>
+        </tr>
+        <tr>
+          <td data-label="Name">MRI OSSH</td>
+          <td data-label="Branch code">8880</td>
+          <td data-label="Branch name">OLAYA</td>
+          <td data-label="Ext">4063</td>
+        </tr>
+        <tr>
+          <td data-label="Name">CT OSSH</td>
+          <td data-label="Branch code">8880</td>
+          <td data-label="Branch name">OLAYA</td>
+          <td data-label="Ext">4036</td>
+        </tr>
+        <tr>
+          <td data-label="Name">CT HMC 1</td>
+          <td data-label="Branch code">8880</td>
+          <td data-label="Branch name">OLAYA</td>
+          <td data-label="Ext">1026</td>
+        </tr>
+        <tr>
+          <td data-label="Name">X-Ray HMC 1</td>
+          <td data-label="Branch code">8880</td>
+          <td data-label="Branch name">OLAYA</td>
+          <td data-label="Ext">1136</td>
+        </tr>
+        <tr>
+          <td data-label="Name">X-Ray 4th Floor</td>
+          <td data-label="Branch code">8880</td>
+          <td data-label="Branch name">OLAYA</td>
+          <td data-label="Ext">2415</td>
+        </tr>
+        <tr>
+          <td data-label="Name">Mammo HMC 1</td>
+          <td data-label="Branch code">8880</td>
+          <td data-label="Branch name">OLAYA</td>
+          <td data-label="Ext">1042</td>
+        </tr>
+        <!-- QASSIM -->
+        <tr>
+          <td data-label="Name">Dr. Sanam Soomro (HOD)</td>
+          <td data-label="Branch code">8882</td>
+          <td data-label="Branch name">QASSIM</td>
+          <td data-label="Ext">6702</td>
+        </tr>
+        <tr>
+          <td data-label="Name">Chief Tech</td>
+          <td data-label="Branch code">8882</td>
+          <td data-label="Branch name">QASSIM</td>
+          <td data-label="Ext">6090</td>
+        </tr>
+        <tr>
+          <td data-label="Name">Reporting Room</td>
+          <td data-label="Branch code">8882</td>
+          <td data-label="Branch name">QASSIM</td>
+          <td data-label="Ext">6069</td>
+        </tr>
+        <tr>
+          <td data-label="Name">MRI/CT</td>
+          <td data-label="Branch code">8882</td>
+          <td data-label="Branch name">QASSIM</td>
+          <td data-label="Ext">6593</td>
+        </tr>
+        <tr>
+          <td data-label="Name">X-Ray</td>
+          <td data-label="Branch code">8882</td>
+          <td data-label="Branch name">QASSIM</td>
+          <td data-label="Ext">6097</td>
+        </tr>
+        <tr>
+          <td data-label="Name">X-Ray ASCOM</td>
+          <td data-label="Branch code">8882</td>
+          <td data-label="Branch name">QASSIM</td>
+          <td data-label="Ext">6180</td>
+        </tr>
+        <!-- RAYYAN -->
+        <tr>
+          <td data-label="Name">Dr. Khalid Rasheed Hameed (HOD)</td>
+          <td data-label="Branch code">8883</td>
+          <td data-label="Branch name">RAYYAN</td>
+          <td data-label="Ext">9851</td>
+        </tr>
+        <tr>
+          <td data-label="Name">Chief Tech/Supervisor</td>
+          <td data-label="Branch code">8883</td>
+          <td data-label="Branch name">RAYYAN</td>
+          <td data-label="Ext">9864</td>
+        </tr>
+        <tr>
+          <td data-label="Name">Dr. Ammad Farooq</td>
+          <td data-label="Branch code">8883</td>
+          <td data-label="Branch name">RAYYAN</td>
+          <td data-label="Ext">9857</td>
+        </tr>
+        <tr>
+          <td data-label="Name">Reporting Room</td>
+          <td data-label="Branch code">8883</td>
+          <td data-label="Branch name">RAYYAN</td>
+          <td data-label="Ext">
+            9855/9852/9859/9856<br>
+            103056/103057/103058/103059<br>
+            103060/103061/103062/103063
+          </td>
+        </tr>
+        <tr>
+          <td data-label="Name">MRI 1 & 2</td>
+          <td data-label="Branch code">8883</td>
+          <td data-label="Branch name">RAYYAN</td>
+          <td data-label="Ext">9863</td>
+        </tr>
+        <tr>
+          <td data-label="Name">MRI 3</td>
+          <td data-label="Branch code">8883</td>
+          <td data-label="Branch name">RAYYAN</td>
+          <td data-label="Ext">5575</td>
+        </tr>
+        <tr>
+          <td data-label="Name">CT</td>
+          <td data-label="Branch code">8883</td>
+          <td data-label="Branch name">RAYYAN</td>
+          <td data-label="Ext">3801</td>
+        </tr>
+        <tr>
+          <td data-label="Name">X-Ray</td>
+          <td data-label="Branch code">8883</td>
+          <td data-label="Branch name">RAYYAN</td>
+          <td data-label="Ext">9862</td>
+        </tr>
+        <!-- TAKHASUSSI -->
+        <tr>
+          <td data-label="Name">Dr. Ehab Aboelfotouh (HOD)</td>
+          <td data-label="Branch code">8884</td>
+          <td data-label="Branch name">TAKHASUSSI</td>
+          <td data-label="Ext">3746</td>
+        </tr>
+        <tr>
+          <td data-label="Name">Chief Tech/Supervisor</td>
+          <td data-label="Branch code">8884</td>
+          <td data-label="Branch name">TAKHASUSSI</td>
+          <td data-label="Ext">3370/3375</td>
+        </tr>
+        <tr>
+          <td data-label="Name">Reporting Room</td>
+          <td data-label="Branch code">8884</td>
+          <td data-label="Branch name">TAKHASUSSI</td>
+          <td data-label="Ext">
+            3748/3752/3753/3750<br>
+            3754/3755/3756/3757<br>
+            3758/3759/3760/3761
+          </td>
+        </tr>
+        <tr>
+          <td data-label="Name">MRI</td>
+          <td data-label="Branch code">8884</td>
+          <td data-label="Branch name">TAKHASUSSI</td>
+          <td data-label="Ext">3761</td>
+        </tr>
+        <tr>
+          <td data-label="Name">CT</td>
+          <td data-label="Branch code">8884</td>
+          <td data-label="Branch name">TAKHASUSSI</td>
+          <td data-label="Ext">5154</td>
+        </tr>
+        <tr>
+          <td data-label="Name">PET CT</td>
+          <td data-label="Branch code">8884</td>
+          <td data-label="Branch name">TAKHASUSSI</td>
+          <td data-label="Ext">3765</td>
+        </tr>
+        <tr>
+          <td data-label="Name">TAK Nuclear Medicine</td>
+          <td data-label="Branch code">8884</td>
+          <td data-label="Branch name">TAKHASUSSI</td>
+          <td data-label="Ext">5165/3758</td>
+        </tr>
+        <tr>
+          <td data-label="Name">Nuclear Medicine Coordinator</td>
+          <td data-label="Branch code">8884</td>
+          <td data-label="Branch name">TAKHASUSSI</td>
+          <td data-label="Ext">3771</td>
+        </tr>
+        <tr>
+          <td data-label="Name">X-Ray</td>
+          <td data-label="Branch code">8884</td>
+          <td data-label="Branch name">TAKHASUSSI</td>
+          <td data-label="Ext">3763</td>
+        </tr>
+        <!-- SUWAIDI -->
+        <tr>
+          <td data-label="Name">Dr. Yousef Rabea (HOD)</td>
+          <td data-label="Branch code">8886</td>
+          <td data-label="Branch name">SUWAIDI</td>
+          <td data-label="Ext">3653</td>
+        </tr>
+        <tr>
+          <td data-label="Name">Chief Tech/Supervisor</td>
+          <td data-label="Branch code">8886</td>
+          <td data-label="Branch name">SUWAIDI</td>
+          <td data-label="Ext">3645</td>
+        </tr>
+        <tr>
+          <td data-label="Name">Reporting Room</td>
+          <td data-label="Branch code">8886</td>
+          <td data-label="Branch name">SUWAIDI</td>
+          <td data-label="Ext">
+            3658/3657/3656/3654<br>
+            3655/3656/3657/3658<br>
+            3659/3660/3661/3662
+          </td>
+        </tr>
+        <tr>
+          <td data-label="Name">MRI</td>
+          <td data-label="Branch code">8886</td>
+          <td data-label="Branch name">SUWAIDI</td>
+          <td data-label="Ext">3652</td>
+        </tr>
+        <tr>
+          <td data-label="Name">CT</td>
+          <td data-label="Branch code">8886</td>
+          <td data-label="Branch name">SUWAIDI</td>
+          <td data-label="Ext">3640</td>
+        </tr>
+        <tr>
+          <td data-label="Name">X-Ray 1 & 2</td>
+          <td data-label="Branch code">8886</td>
+          <td data-label="Branch name">SUWAIDI</td>
+          <td data-label="Ext">3638</td>
+        </tr>
+        <!-- KHOBAR -->
+        <tr>
+          <td data-label="Name">Dr. Hisham Al Dossary (HOD)</td>
+          <td data-label="Branch code">8888</td>
+          <td data-label="Branch name">KHOBAR</td>
+          <td data-label="Ext">2437</td>
+        </tr>
+        <tr>
+          <td data-label="Name">Chief Tech/Supervisor</td>
+          <td data-label="Branch code">8888</td>
+          <td data-label="Branch name">KHOBAR</td>
+          <td data-label="Ext">1057</td>
+        </tr>
+        <tr>
+          <td data-label="Name">Reporting Room</td>
+          <td data-label="Branch code">8888</td>
+          <td data-label="Branch name">KHOBAR</td>
+          <td data-label="Ext">1757</td>
+        </tr>
+        <tr>
+          <td data-label="Name">MRI</td>
+          <td data-label="Branch code">8888</td>
+          <td data-label="Branch name">KHOBAR</td>
+          <td data-label="Ext">1054</td>
+        </tr>
+        <tr>
+          <td data-label="Name">CT</td>
+          <td data-label="Branch code">8888</td>
+          <td data-label="Branch name">KHOBAR</td>
+          <td data-label="Ext">2045</td>
+        </tr>
+        <tr>
+          <td data-label="Name">X-Ray 1</td>
+          <td data-label="Branch code">8888</td>
+          <td data-label="Branch name">KHOBAR</td>
+          <td data-label="Ext">1052</td>
+        </tr>
+        <tr>
+          <td data-label="Name">X-Ray 2</td>
+          <td data-label="Branch code">8888</td>
+          <td data-label="Branch name">KHOBAR</td>
+          <td data-label="Ext">1053</td>
+        </tr>
+        <tr>
+          <td data-label="Name">X-Ray ASCOM</td>
+          <td data-label="Branch code">8888</td>
+          <td data-label="Branch name">KHOBAR</td>
+          <td data-label="Ext">1877</td>
+        </tr>
+        <!-- JEDDAH - FAYHA -->
+        <tr>
+          <td data-label="Name">Dr. Ahmed Abukwaik (HOD)</td>
+          <td data-label="Branch code">202081</td>
+          <td data-label="Branch name">JEDDAH - FAYHA</td>
+          <td data-label="Ext">202081</td>
+        </tr>
+        <tr>
+          <td data-label="Name">Chief Tech/Supervisor</td>
+          <td data-label="Branch code">202090</td>
+          <td data-label="Branch name">JEDDAH - FAYHA</td>
+          <td data-label="Ext">202090</td>
+        </tr>
+        <tr>
+          <td data-label="Name">Reporting Room</td>
+          <td data-label="Branch code">202087</td>
+          <td data-label="Branch name">JEDDAH - FAYHA</td>
+          <td data-label="Ext">202087</td>
+        </tr>
+        <tr>
+          <td data-label="Name">MRI</td>
+          <td data-label="Branch code">202093</td>
+          <td data-label="Branch name">JEDDAH - FAYHA</td>
+          <td data-label="Ext">202093</td>
+        </tr>
+        <tr>
+          <td data-label="Name">CT</td>
+          <td data-label="Branch code">202086</td>
+          <td data-label="Branch name">JEDDAH - FAYHA</td>
+          <td data-label="Ext">202086</td>
+        </tr>
+        <tr>
+          <td data-label="Name">U/S</td>
+          <td data-label="Branch code">202084</td>
+          <td data-label="Branch name">JEDDAH - FAYHA</td>
+          <td data-label="Ext">202084</td>
+        </tr>
+        <tr>
+          <td data-label="Name">X-Ray 1</td>
+          <td data-label="Branch code">202092</td>
+          <td data-label="Branch name">JEDDAH - FAYHA</td>
+          <td data-label="Ext">202092</td>
+        </tr>
+        <tr>
+          <td data-label="Name">X-Ray 2</td>
+          <td data-label="Branch code">202089</td>
+          <td data-label="Branch name">JEDDAH - FAYHA</td>
+          <td data-label="Ext">202089</td>
+        </tr>
+        <!-- SAHAFA -->
+        <tr>
+          <td data-label="Name">Dr. Ishaq Uri (HOD)</td>
+          <td data-label="Branch code">103053</td>
+          <td data-label="Branch name">SAHAFA</td>
+          <td data-label="Ext">103053</td>
+        </tr>
+        <tr>
+          <td data-label="Name">Chief Tech/Supervisor</td>
+          <td data-label="Branch code">103055</td>
+          <td data-label="Branch name">SAHAFA</td>
+          <td data-label="Ext">103055</td>
+        </tr>
+        <tr>
+          <td data-label="Name">Reporting Room</td>
+          <td data-label="Branch code">103054</td>
+          <td data-label="Branch name">SAHAFA</td>
+          <td data-label="Ext">
+            103054/103057/103058/103077<br>
+            103078/103079
+          </td>
+        </tr>
+        <tr>
+          <td data-label="Name">MRI</td>
+          <td data-label="Branch code">103060</td>
+          <td data-label="Branch name">SAHAFA</td>
+          <td data-label="Ext">103060</td>
+        </tr>
+        <tr>
+          <td data-label="Name">CT</td>
+          <td data-label="Branch code">103059</td>
+          <td data-label="Branch name">SAHAFA</td>
+          <td data-label="Ext">103059</td>
+        </tr>
+        <tr>
+          <td data-label="Name">U/S</td>
+          <td data-label="Branch code">106064</td>
+          <td data-label="Branch name">SAHAFA</td>
+          <td data-label="Ext">106064</td>
+        </tr>
+        <tr>
+          <td data-label="Name">X-Ray</td>
+          <td data-label="Branch code">106063</td>
+          <td data-label="Branch name">SAHAFA</td>
+          <td data-label="Ext">106063</td>
+        </tr>
+        <!-- AL GHADEER (HMC) -->
+        <tr>
+          <td data-label="Name">MRI/CT</td>
+          <td data-label="Branch code">400350</td>
+          <td data-label="Branch name">AL GHADEER (HMC)</td>
+          <td data-label="Ext">400350</td>
+        </tr>
+        <tr>
+          <td data-label="Name">ASCOM</td>
+          <td data-label="Branch code">400542</td>
+          <td data-label="Branch name">AL GHADEER (HMC)</td>
+          <td data-label="Ext">400542</td>
+        </tr>
+        <!-- AL NARJIS (HMC) -->
+        <tr>
+          <td data-label="Name">CT</td>
+          <td data-label="Branch code">400033</td>
+          <td data-label="Branch name">AL NARJIS (HMC)</td>
+          <td data-label="Ext">400033</td>
+        </tr>
+        <tr>
+          <td data-label="Name">ASCOM</td>
+          <td data-label="Branch code">400267</td>
+          <td data-label="Branch name">AL NARJIS (HMC)</td>
+          <td data-label="Ext">400267</td>
+        </tr>
+        <!-- DIPLOMATIC QUARTER (DQ) -->
+        <tr>
+          <td data-label="Name">X-Ray</td>
+          <td data-label="Branch code">8886</td>
+          <td data-label="Branch name">DIPLOMATIC QUARTER (DQ)</td>
+          <td data-label="Ext">6034</td>
+        </tr>
+        <!-- DIGITAL CITY (DC) -->
+        <tr>
+          <td data-label="Name">X-Ray</td>
+          <td data-label="Branch code">40</td>
+          <td data-label="Branch name">DIGITAL CITY (DC)</td>
+          <td data-label="Ext">2115</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="back-button-container">
+    <a href="index.html" class="button">Back</a>
+  </div>
+
+  <div class="footer">
+    &copy; 2025 Abdullah AlQarni. All rights reserved.
+  </div>
+
+  <script>
+    function searchDirectory() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("searchInput");
+      filter = input.value.toUpperCase();
+      table = document.querySelector(".directory");
+      tr = table.getElementsByTagName("tr");
+
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0]; // البحث في الخانة الأولى (Name)
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+  </script>
 </body>
 </html>
