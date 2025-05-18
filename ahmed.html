@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة تحكم فريق العمليات</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* إعدادات أساسية */
+        body {
+            font-family: 'Cairo', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7fa;
+            direction: rtl;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #2d3436;
+            color: #dfe6e9;
+            display: flex;
+            flex-direction: column;
+            padding-top: 20px;
+            transition: width 0.3s;
+        }
+        .sidebar.collapsed { width: 60px; }
+        .sidebar .logo {
+            text-align: center;
+            font-size: 20px;
+            margin-bottom: 30px;
+            font-weight: bold;
+            color: #dfe6e9;
+        }
+        .sidebar ul { list-style: none; padding: 0; margin: 0; flex-grow: 1; }
+        .sidebar ul li {
+            padding: 15px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+        }
+        .sidebar ul li:hover, .sidebar ul li.active {
+            background-color: #636e72;
+        }
+        .sidebar ul li i { margin-right: 15px; font-size: 18px; }
+
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .header h2 { margin: 0; color: #2d3436; }
+
+        .form-container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            display: none;
+        }
+        .form-container.active { display: block; }
+
+        .form-section { margin-bottom: 25px; }
+        .form-section label {
+            display: block;
+            margin-bottom: 8px;
+            color: #2d3436;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .form-section input[type="text"],
+        .form-section input[type="number"],
+        .form-section input[type="date"],
+        .form-section select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #b2bec3;
+            border-radius: 6px;
+            font-size: 16px;
+            background-color: #dfe6e9;
+            box-sizing: border-box;
+            transition: border-color 0.3s, background-color 0.3s;
+        }
+        .form-section input:focus,
+        .form-section select:focus {
+            border-color: #0984e3;
+            background-color: #ffffff;
+            outline: none;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        table th, table td {
+            border: 1px solid #b2bec3 !important;
+            padding: 12px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+        table th { background-color: #74b9ff; color: #ffffff; }
+        table td input {
+            width: 90%;
+            padding: 6px;
+            border: 1px solid #b2bec3;
+            border-radius: 4px;
+            background-color: #ffffff;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: #00b894;
+            border: none;
+            border-radius: 6px;
+            color: #ffffff;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .submit-btn:hover { background-color: #55efc4; }
+
+        @media (max-width: 768px) {
+            .sidebar { position: fixed; left: -250px; z-index: 1000; }
+            .sidebar.active { left: 0; }
+            .hamburger-btn { display: block; position: fixed; top: 15px; left: 15px; background: #2d3436; color: #dfe6e9; border: none; padding: 10px; border-radius: 5px; cursor: pointer; z-index: 1100; }
+        }
+        @media (min-width: 769px) { .hamburger-btn { display: none; } }
+    </style>
+</head>
+<body>
+
+    <button class="hamburger-btn" id="hamburgerBtn"><i class="fas fa-bars"></i></button>
+
+    <div class="sidebar" id="sidebar">
+        <div class="logo">لوحة التحكم</div>
+        <ul>
+            <li class="active" data-form="emergencyOpsTeam"><i class="fas fa-users-medical"></i> فريق العمليات الاسعافية</li>
+            <!-- العناصر الأخرى حسب الحاجة -->
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <h2>لوحة تحكم فريق العمليات</h2>
+        </div>
+
+        <!-- نموذج فريق العمليات الاسعافية -->
+        <div class="form-container active" id="emergencyOpsTeam">
+            <div class="form-section">
+                <label for="date">التاريخ:</label>
+                <input type="date" id="date" required>
+            </div>
+            <div class="form-section">
+                <label for="shift">المناوبة:</label>
+                <select id="shift" required>
+                    <option value="">— اختر المناوبة —</option>
+                    <option value="صباح">صباح</option>
+                    <option value="مساء">مساء</option>
+                </select>
+            </div>
+            <div class="form-section">
+                <label for="teamSelect">الفريق:</label>
+                <select id="teamSelect" required>
+                    <option value="">— اختر الفريق —</option>
+                    <option value="الإسعاف_الأرضي">الإسعاف الأرضي</option>
+                    <option value="التحكم_العملياتي">التحكم العملياتي</option>
+                    <option value="الترحيل_الطبي">الترحيل الطبي</option>
+                    <option value="الإسعاف_الجوي">الإسعاف الجوي</option>
+                    <option value="فريق_العمليات">فريق العمليات</option>
+                </select>
+            </div>
+            <div class="form-section">
+                <table id="opsTable">
+                    <thead>
+                        <tr>
+                            <th>الفريق</th>
+                            <th>تعريف المؤشر</th>
+                            <th>إدخال المؤشر</th>
+                            <th>المستهدف</th>
+                            <th>خط الأساس</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- يملأ ديناميكياً -->
+                    </tbody>
+                </table>
+            </div>
+            <button type="button" class="submit-btn" onclick="submitEmergencyOps()">إرسال النموذج</button>
+        </div>
+    </div>
+
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const menuItems = document.querySelectorAll('.sidebar ul li');
+        const forms = document.querySelectorAll('.form-container');
+
+        hamburgerBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+        });
+
+        menuItems.forEach(item => {
+            item.addEventListener('click', () => {
+                menuItems.forEach(el => el.classList.remove('active'));
+                item.classList.add('active');
+                forms.forEach(form => form.classList.remove('active'));
+                const target = document.getElementById(item.getAttribute('data-form'));
+                if (target) target.classList.add('active');
+            });
+        });
+
+        const indicators = {
+            'الإسعاف_الأرضي': [
+                ["الإسعاف الأرضي","مؤشر زمن الإستجابة العام لمهمة الحج 1446 هـ","00:30:00","00:41:10"],
+                ["الإسعاف الأرضي","متوسط زمن استجابة سيارات الإسعاف للحالات الطارئة في المنطقة المركزية","13:00","13:09"],
+                ["الإسعاف الأرضي","نسبة الحالات الاسعافية التي تم الوصول إليها خلال 8 دقائق منذ وصول البلاغ المنطقة المركزية","60%","58%"],
+                ["الإسعاف الأرضي","متوسط زمن استجابة سيارات الإسعاف للحالات الطارئة في المشاعر المقدسة","15:00","67:33:00"],
+                ["الإسعاف الأرضي","متوسط زمن استجابة سيارات الإسعاف للحالات الطارئة في المدينة المنورة","12:00","14:42"],
+                ["الإسعاف الأرضي","مؤشر زمن الإستجابة لحالات الطوارئ المخصص: برنامج الحج 1446","0:30:02","0:38:48"],
+                ["الإسعاف الأرضي","— المركزية","00:13:00","00:13:09"],
+                ["الإسعاف الأرضي","— الحرم","00:14:14","00:17:48"],
+                ["الإسعاف الأرضي","— نطاق منى","00:50:00","1:04:49"],
+                ["الإسعاف الأرضي","— نطاق مزدلفة","1:00:00","1:16:17"],
+                ["الإسعاف الأرضي","— نطاق عرفات","00:58:00","1:13:36"],
+                ["الإسعاف الأرضي","نسبة البلاغات التي يتم الإستجابة لها خلال أكثر من 60 دقيقة","40%","85.54%"],
+                ["الإسعاف الأرضي","معدّل البلاغات ذات الاستجابة الصفرية (فيكتور)","30%","8%"],
+                ["الإسعاف الأرضي","نسبة إشغال الوحدات التشغيلية","60.00%","56.55%"],
+                ["الإسعاف الأرضي","معدّل التغطية في المشاعر المقدسة","وحدة تشغيلية لكل 4986 حاج","لكل 5780 حاج"],
+                ["الإسعاف الأرضي","نسبة المرضى الذين يتعذّر الوصول لهم","11.60%","16%"],
+                ["الإسعاف الأرضي","نسبة توزيع نقل المرضى للمستشفيات","—","93.9%"],
+                ["الإسعاف الأرضي","— الحكومية غير وزارة الصحة","—","4.53%"],
+                ["الإسعاف الأرضي","— القطاع الخاص","—","0%"],
+                ["الإسعاف الأرضي","نسبة العلاج في الموقع للحالات الحرارية","55.00%","54.93%"],
+                ["الإسعاف الأرضي","نسبة علاج انخفاض سكر الدم","80%","70%"],
+                ["الإسعاف الأرضي","حالات تعطل بسبب المصدات","0","26%"],
+                ["الإسعاف الأرضي","حالات تعطل بسبب الافتراش","0","0"]
+            ],
+            'التحكم_العملياتي': [
+                ["التحكم العملياتي","نسبة نجاح الإستجابة لبلاغات ضيوف الرحمن","90%","لا يوجد قياس سابق"],
+                ["التحكم العملياتي","نسبة من تم إجراء تخطيط القلب لهم","70%","60%"]
+            ],
+            'الترحيل_الطبي': [
+                ["الترحيل الطبي","نسبة استعادة النبض في توقف القلب","18%","12%"],
+                ["الترحيل الطبي","مؤشر تفعيل المسارات التخصصية","90%","لا يوجد قياس سابق"],
+                ["الترحيل الطبي","نسبة تقديم إرشادات طبية","90%","لا يوجد قياس سابق"],
+                ["الترحيل الطبي","مؤشر خدمة الطب الإتصالي","≥90%","لا يوجد قياس سابق"]
+            ],
+            'الإسعاف_الجوي': [
+                ["الإسعاف الجوي","عدد المنقولين عبر الإسعاف الجوي","≥ طلبات الإسعاف","لا تتوفر بيانات"]
+            ],
+            'فريق_العمليات': [
+                ["فريق العمليات","نسبة جاهزية الفريق لموسم الحج 1446هـ","100%","—"],
+                ["فريق العمليات","نسبة إكتمال مهام الاستجابة","100%","—"],
+                ["فريق العمليات","نسبة إكتمال مهام الانسحاب","100%","—"]
+            ]
+        };
+
+        document.getElementById('teamSelect').addEventListener('change', function() {
+            const key = this.value;
+            const tbody = document.querySelector('#opsTable tbody');
+            tbody.innerHTML = '';
+            if (!indicators[key]) return;
+            indicators[key].forEach(data => {
+                const [team, def, target, base] = data;
+                const tr = document.createElement('tr');
+                [team, def].forEach(text => {
+                    const td = document.createElement('td');
+                    td.textContent = text;
+                    tr.appendChild(td);
+                });
+                // عمود إدخال المؤشر
+                const inputTd = document.createElement('td');
+                const inp = document.createElement('input');
+                inp.type = 'text';
+                inp.required = true;
+                inputTd.appendChild(inp);
+                tr.appendChild(inputTd);
+                // أعمدة المستهدف وخط الأساس
+                [target, base].forEach(text => {
+                    const td = document.createElement('td');
+                    td.textContent = text;
+                    td.style.backgroundColor = '#ecf0f1';
+                    tr.appendChild(td);
+                });
+                tbody.appendChild(tr);
+            });
+        });
+
+        function submitEmergencyOps() {
+            const date = document.getElementById('date').value;
+            const shift = document.getElementById('shift').value;
+            const team = document.getElementById('teamSelect').value;
+            if (!date || !shift || !team) {
+                alert('يرجى تعبئة الحقول الإلزامية.');
+                return;
+            }
+            console.log('إرسال:', { date, shift, team });
+            alert('تم إرسال النموذج بنجاح.');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelector('.sidebar ul li.active').click();
+        });
+    </script>
+</body>
+</html>
