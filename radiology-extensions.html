@@ -133,7 +133,7 @@ html,body{
 }
 .directory{
   width:100%;
-  max-width:1200px;             /* keeps nice width centered */
+  max-width:1200px;
   border-collapse:separate;border-spacing:0;min-width:900px;background:#fff;
   margin:0 auto;
 }
@@ -213,6 +213,28 @@ html,body{
   white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
 }
 
+/* ===== Mobile behavior: header TOP, footer BOTTOM ===== */
+@media (max-width: 640px){
+  html, body { height:100%; }
+  body { display:block; }
+
+  .sheet{
+    margin:0;                  /* يزيل أي فراغ أعلى/أسفل */
+    min-height:100dvh;         /* طول شاشة الجوال */
+    border-radius:0;           /* يلتصق بالحواف */
+    box-shadow:none;           /* بدون ظل على الجوال */
+    display:flex;
+    flex-direction:column;     /* لندفع الفوتر لأسفل */
+  }
+
+  .container{ flex:1 0 auto; } /* يملأ المساحة بين الهيدر والفوتر */
+  .site-footer{
+    margin-top:auto;
+    border-top-left-radius:0;
+    border-top-right-radius:0;
+  }
+}
+
 /* Print friendly */
 @page{size:A4 portrait;margin:12mm}
 @media print{
@@ -267,7 +289,7 @@ html,body{
               <tr><td data-label="Name">Mohammed Shahnawaz – Corporate Secretary</td><td data-label="Branch code">8880</td><td data-label="Branch name">Corporate Radiology</td><td data-label="Ext">4374</td></tr>
               <tr><td data-label="Name">Allyn Leigh / Juciel Amper</td><td data-label="Branch code">8880</td><td data-label="Branch name">Corporate Radiology</td><td data-label="Ext">4383</td></tr>
 
-              <!-- ===== OLAYA (original + merged duplicates) ===== -->
+              <!-- ===== OLAYA ===== -->
               <tr><td data-label="Name">Dr. Amneh Abdullah (HOD)</td><td data-label="Branch code">8880</td><td data-label="Branch name">OLAYA</td><td data-label="Ext">1133/1134</td></tr>
               <tr><td data-label="Name">Chief Tech/Supervisor</td><td data-label="Branch code">8880</td><td data-label="Branch name">OLAYA</td><td data-label="Ext">1153/1132</td></tr>
               <tr><td data-label="Name">Reception</td><td data-label="Branch code">8880</td><td data-label="Branch name">OLAYA</td><td data-label="Ext">1021</td></tr>
@@ -287,7 +309,7 @@ html,body{
               <tr><td data-label="Name">Mammo HMC 1</td><td data-label="Branch code">8880</td><td data-label="Branch name">OLAYA</td><td data-label="Ext">1042</td></tr>
               <tr><td data-label="Name">IVF 4TH FLOOR</td><td data-label="Branch code">8880</td><td data-label="Branch name">OLAYA</td><td data-label="Ext">5409</td></tr>
 
-              <!-- ===== QASSIM (merged) ===== -->
+              <!-- ===== QASSIM ===== -->
               <tr><td data-label="Name">Dr. Sanam Soomro (HOD)</td><td data-label="Branch code">8882</td><td data-label="Branch name">QASSIM</td><td data-label="Ext">6702</td></tr>
               <tr><td data-label="Name">Chief Tech</td><td data-label="Branch code">8882</td><td data-label="Branch name">QASSIM</td><td data-label="Ext">6090</td></tr>
               <tr><td data-label="Name">Reporting Room</td><td data-label="Branch code">8882</td><td data-label="Branch name">QASSIM</td><td data-label="Ext">6069</td></tr>
@@ -305,7 +327,7 @@ html,body{
               <tr><td data-label="Name">FLUOROSCOPY</td><td data-label="Branch code">8882</td><td data-label="Branch name">QASSIM</td><td data-label="Ext">6096</td></tr>
               <tr><td data-label="Name">TRANSCRIPTIONIST</td><td data-label="Branch code">8882</td><td data-label="Branch name">QASSIM</td><td data-label="Ext">6058</td></tr>
 
-              <!-- ===== RAYYAN (merged) ===== -->
+              <!-- ===== RAYYAN ===== -->
               <tr><td data-label="Name">Dr. Khalid Rasheed Hameed (HOD)</td><td data-label="Branch code">8883</td><td data-label="Branch name">RAYYAN</td><td data-label="Ext">9851</td></tr>
               <tr><td data-label="Name">Chief Tech/Supervisor</td><td data-label="Branch code">8883</td><td data-label="Branch name">RAYYAN</td><td data-label="Ext">9864</td></tr>
               <tr><td data-label="Name">Dr. Ammad Farooq</td><td data-label="Branch code">8883</td><td data-label="Branch name">RAYYAN</td><td data-label="Ext">9857</td></tr>
@@ -330,7 +352,7 @@ html,body{
               <tr><td data-label="Name">FLUOROSCOPY</td><td data-label="Branch code">8883</td><td data-label="Branch name">RAYYAN</td><td data-label="Ext">9861</td></tr>
               <tr><td data-label="Name">MAMMOGRAPHY</td><td data-label="Branch code">8883</td><td data-label="Branch name">RAYYAN</td><td data-label="Ext">4374</td></tr>
 
-              <!-- ===== TAKHASUSSI (original + additions, with no dupes) ===== -->
+              <!-- ===== TAKHASUSSI ===== -->
               <tr><td data-label="Name">Dr. Ehab Aboelfotouh (HOD)</td><td data-label="Branch code">8884</td><td data-label="Branch name">TAKHASUSSI</td><td data-label="Ext">3746</td></tr>
               <tr><td data-label="Name">Chief Tech/Supervisor</td><td data-label="Branch code">8884</td><td data-label="Branch name">TAKHASUSSI</td><td data-label="Ext">3370/3375</td></tr>
               <tr><td data-label="Name">Radiology Reception</td><td data-label="Branch code">8884</td><td data-label="Branch name">TAKHASUSSI</td><td data-label="Ext">3745</td></tr>
@@ -356,7 +378,7 @@ html,body{
               <tr><td data-label="Name">PET CT (Alt)</td><td data-label="Branch code">8884</td><td data-label="Branch name">TAKHASUSSI</td><td data-label="Ext">3756</td></tr>
               <tr><td data-label="Name">Muaadh (Nuclear Medicine)</td><td data-label="Branch code">8884</td><td data-label="Branch name">TAKHASUSSI</td><td data-label="Ext">3758, 5156, 3758</td></tr>
 
-              <!-- ===== TAKHASSUSI - MATERNITY ===== -->
+              <!-- ===== TAKHASSUSSI - MATERNITY ===== -->
               <tr><td data-label="Name">Radiologist Repoting Room</td><td data-label="Branch code">—</td><td data-label="Branch name">TAKHASSUSSI-MATERNITY</td><td data-label="Ext">120045</td></tr>
               <tr><td data-label="Name">Radiology Supervisor</td><td data-label="Branch code">—</td><td data-label="Branch name">TAKHASSUSSI-MATERNITY</td><td data-label="Ext">126025/ 120040</td></tr>
               <tr><td data-label="Name">Radiology Reception</td><td data-label="Branch code">—</td><td data-label="Branch name">TAKHASSUSSI-MATERNITY</td><td data-label="Ext">120040</td></tr>
@@ -397,7 +419,7 @@ html,body{
               <tr><td data-label="Name">X-Ray 1</td><td data-label="Branch code">202092</td><td data-label="Branch name">JEDDAH - FAYHA</td><td data-label="Ext">202092</td></tr>
               <tr><td data-label="Name">X-Ray 2</td><td data-label="Branch code">202089</td><td data-label="Branch name">JEDDAH - FAYHA</td><td data-label="Ext">202089</td></tr>
 
-              <!-- ===== SAHAFA (original block) ===== -->
+              <!-- ===== SAHAFA ===== -->
               <tr><td data-label="Name">Dr. Ishaq Uri (HOD)</td><td data-label="Branch code">103053</td><td data-label="Branch name">SAHAFA</td><td data-label="Ext">103053</td></tr>
               <tr><td data-label="Name">Chief Tech/Supervisor</td><td data-label="Branch code">103055</td><td data-label="Branch name">SAHAFA</td><td data-label="Ext">103055</td></tr>
               <tr><td data-label="Name">Reporting Room</td><td data-label="Branch code">103054</td><td data-label="Branch name">SAHAFA</td><td data-label="Ext">103054/103057/103058/103077<br>103078/103079</td></tr>
