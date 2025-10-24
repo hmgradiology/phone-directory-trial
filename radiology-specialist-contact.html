@@ -1,810 +1,403 @@
+<?php
+header('Content-Type: text/html; charset=utf-8');
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Radiology Specialist Contact</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    /* بداية التنسيقات المحدثة لجعل الصفحة متوافقة مع جميع الشاشات وبشكل احترافي */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>Radiology Specialists – HMG</title>
 
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #E6FAF7;
-      color: #333;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
-    .header {
-      background-color: #B8EAE2;
-      padding: 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-    }
+<style>
+:root{
+  --brand:#E74F54;
+  --brand-600:#c94247;
 
-    #logo {
-      width: 50px;
-      height: auto;
-      margin-right: 1rem;
-    }
+  --ink:#231F20;
+  --muted:#6B7280;
+  --line:#E6E7EA;
+  --bg:#F5F6F8;
+  --white:#fff;
 
-    .header h1 {
-      font-size: 1.5rem;
-      color: #0F5D5B;
-    }
+  --page-w:1240px;
+  --radius-lg:22px;
+  --radius:14px;
 
-    .directory-container {
-      max-width: 1100px;
-      margin: 2rem auto;
-      background-color: #FFFFFF;
-      padding: 1rem 2rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
+  --shadow-page:0 40px 90px rgba(0,0,0,.16);
+  --shadow-card:0 14px 34px rgba(0,0,0,.10);
+  --shadow-soft:0 6px 18px rgba(0,0,0,.08);
+}
 
-    .search-container {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      margin-bottom: 1rem;
-    }
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:'Tajawal',system-ui,-apple-system,Segoe UI,Arial,sans-serif;
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
 
-    .search-container label {
-      font-weight: bold;
-      color: #0F5D5B;
-    }
+.sheet{
+  width:min(100%, var(--page-w));
+  margin:48px auto 64px;
+  background:var(--white);
+  border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-page);
+  overflow:hidden;
+  position:relative;
+}
 
-    #searchInput {
-      padding: 0.5rem;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      font-size: 1rem;
-      max-width: 300px;
-    }
+.topbar{
+  background:linear-gradient(90deg,var(--brand) 0%, var(--brand-600) 100%);
+  color:#fff; padding:12px 20px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
+.brand{display:flex;align-items:center;gap:12px}
+.logo-pill{
+  background:#fff; border:1px solid rgba(255,255,255,.6);
+  border-radius:12px; padding:6px; display:flex; align-items:center;
+  box-shadow:var(--shadow-soft);
+}
+.brand img#logo{height:46px;width:auto;display:block}
+.region-pill{
+  background:#fff;color:var(--brand);
+  padding:8px 18px;border-radius:999px;font-weight:800;border:1px solid rgba(255,255,255,.6);
+  box-shadow:var(--shadow-soft);
+  max-width:60%; text-align:center; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
 
-    .directory {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 2rem;
-    }
+.container{padding:26px 22px 28px}
 
-    .directory thead {
-      background-color: #E6FAF7;
-    }
+.hero{
+  background:#fff; border:1px solid var(--line); border-radius:var(--radius);
+  box-shadow:var(--shadow-card); padding:22px 20px 18px; margin-bottom:18px; position:relative;
+}
+.hero::after{
+  content:''; position:absolute; inset:0 0 0 auto; width:6px; background:var(--brand);
+  border-top-left-radius:6px; border-bottom-left-radius:6px;
+}
+.hero h1{ text-align:center; color:var(--brand); font-size:clamp(1.4rem, 2.6vw, 2rem); font-weight:800; line-height:1.3; margin-bottom:6px }
+.hero .meta{ text-align:center; color:var(--muted); font-size:clamp(.9rem, 1.2vw, 1.02rem) }
 
-    .directory thead th {
-      font-weight: bold;
-      text-align: left;
-      color: #0F5D5B;
-      padding: 0.75rem;
-      border-bottom: 2px solid #ccc;
-    }
+/* ===== Section + Head (Enhanced Fill) ===== */
+.section{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow-card); overflow:hidden; margin-top:16px;
+}
+.section .head{
+  position:relative;
+  padding:14px 16px;
+  text-align:center;
+  font-weight:800;
+  color:#fff;
+  font-size:clamp(1.05rem, 1.8vw, 1.25rem);
+  border-bottom:1px solid var(--line);
+  background:
+    linear-gradient(120deg, rgba(255,255,255,.12) 0%, rgba(255,255,255,0) 60%) center/cover no-repeat,
+    repeating-linear-gradient(-45deg, rgba(255,255,255,.08), rgba(255,255,255,.08) 10px, rgba(255,255,255,0) 10px, rgba(255,255,255,0) 20px),
+    linear-gradient(90deg, var(--brand) 0%, var(--brand-600) 100%);
+  box-shadow:inset 0 -1px 0 rgba(0,0,0,.08);
+}
 
-    .directory tbody tr {
-      border-bottom: 1px solid #eee;
-    }
+/* Inner padding */
+.pad{padding:14px 16px}
 
-    .directory td {
-      padding: 0.75rem;
-    }
+/* ===== Search row (Centered) ===== */
+.search-row{
+  display:flex;align-items:center;justify-content:center;
+  gap:12px;flex-wrap:wrap;margin-bottom:12px; width:100%;
+}
+.search-row label{font-weight:800;color:var(--brand);display:flex;align-items:center;gap:8px}
+.search-row input{
+  padding:12px 14px;border:1px solid #d7dbe2;border-radius:12px;min-width:280px;font-size:16px;outline:none;
+  width: clamp(260px, 48vw, 520px);
+  transition:border-color .2s ease, box-shadow .2s ease;
+}
+.search-row input:focus{border-color:var(--brand);box-shadow:0 0 0 3px rgba(231,79,84,.18)}
+@media (max-width: 600px){
+  .search-row{gap:10px}
+  .search-row input{min-width:unset;width:100%}
+}
 
-    .directory td[data-label] {
-      color: #333;
-    }
+/* ===== Table wrapper + Table (Centered data) ===== */
+.table-wrap{
+  overflow:auto;border:1px solid var(--line);border-radius:14px;background:#fff;
+  display:flex;justify-content:center;align-items:stretch;
+}
+.directory{
+  width:100%;
+  max-width:1200px;
+  border-collapse:separate;border-spacing:0;min-width:900px;background:#fff;
+  margin:0 auto;
+}
+.directory thead th{
+  background:linear-gradient(90deg,var(--bg), #fff);
+  color:var(--brand);font-weight:800;text-align:center;padding:12px 14px;border-bottom:1px solid var(--line);
+  position:sticky;top:0;z-index:1
+}
+/* Column separation + zebra */
+.directory thead th + th,
+.directory tbody td + td{border-left:1px solid #eef0f4}
+.directory tbody tr{border-bottom:1px solid var(--line)}
+.directory tbody tr:nth-child(odd){background:#fafbfc}
+.directory tbody tr:hover{background:#f4f7ff55}
+.directory td{
+  padding:12px 14px;vertical-align:middle;word-break:break-word;
+  text-align:center;
+}
+/* Emphasis */
+.directory td[data-label="Doctor's Name"]{font-weight:800;color:#0f141a}
+.directory td[data-label="Branch"]{font-weight:700;color:#374151}
 
-    /* تنسيق الخلايا وفقًا للتسمية أو الخانة */
-    .directory td[data-label="Doctor name"] {
-      font-weight: bold;
-      color: #0F5D5B;
-    }
+/* ===== Actions ===== */
+.actions{display:flex;justify-content:center;gap:10px;margin-top:14px}
+.button{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 18px;border-radius:12px;text-decoration:none;font-size:16px;font-weight:700;
+  color:#FFF;background-color:var(--brand);transition:background-color .25s ease
+}
+.button:hover{background-color:var(--brand-600)}
+.button:focus-visible{outline:3px solid rgba(231,79,84,.35);outline-offset:2px;border-radius:14px}
 
-    /* جعل التصميم متجاوبًا عبر الشاشات */
-    @media screen and (max-width: 768px) {
-      .directory thead {
-        display: none;
-      }
-      .directory,
-      .directory tbody,
-      .directory tr,
-      .directory td {
-        display: block;
-        width: 100%;
-      }
-      .directory tr {
-        margin-bottom: 1rem;
-        border-bottom: 2px solid #ddd;
-        padding-bottom: 1rem;
-      }
-      .directory td {
-        text-align: left;
-        position: relative;
-        padding-left: 40%;
-        margin-bottom: 0.5rem;
-        border-bottom: none;
-      }
-      .directory td::before {
-        content: attr(data-label);
-        position: absolute;
-        left: 1rem;
-        font-weight: bold;
-        color: #0F5D5B;
-      }
-    }
+/* ===== Mobile Card Layout ===== */
+@media (max-width: 768px){
+  .container{padding:18px 14px 22px}
+  .region-pill{max-width:70%}
+  .table-wrap{border:none;display:block}
+  .directory{min-width:0;border-collapse:collapse;max-width:none}
+  .directory thead{display:none}
+  .directory, .directory tbody, .directory tr, .directory td{
+    display:block; width:100%
+  }
+  .directory tbody tr{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:14px;
+    box-shadow:var(--shadow-soft);
+    margin-bottom:12px;
+    padding:10px 10px 4px 10px;
+  }
+  .directory tbody tr:hover{background:#fff}
+  .directory td{
+    border:none; border-bottom:1px dashed #e9ecf1; padding:10px 6px 10px 44%;
+    position:relative; min-height:42px; text-align:left;
+  }
+  .directory td:last-child{border-bottom:none}
+  .directory td::before{
+    content:attr(data-label);
+    position:absolute; left:10px; top:50%; transform:translateY(-50%);
+    font-weight:800; color:var(--brand); width:34%;
+    text-align:left; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  }
+  .directory tbody td + td{border-left:none}
+}
 
-    .back-button-container {
-      text-align: center;
-      margin: 2rem 0;
-    }
+/* ===== Footer ===== */
+.site-footer{
+  background:linear-gradient(90deg,var(--brand) 0%, var(--brand-600) 100%);
+  color:#fff;
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  padding:14px 16px; margin-top:18px; border-top:1px solid rgba(255,255,255,.18);
+}
+.site-footer .copyright{
+  font-weight:700; letter-spacing:.2px; font-size:14.5px;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
 
-    .button {
-      display: inline-block;
-      padding: 0.75rem 1.5rem;
-      border-radius: 4px;
-      text-decoration: none;
-      font-size: 1rem;
-      color: #FFF;
-      background-color: #0F5D5B;
-      transition: background-color 0.3s ease;
-    }
-
-    .button:hover {
-      background-color: #0b4644;
-    }
-
-    .footer {
-      text-align: center;
-      padding: 1rem 0;
-      font-size: 0.9rem;
-      color: #666;
-    }
-    /* نهاية التنسيقات المحدثة */
-  </style>
+/* Print friendly */
+@page{size:A4 portrait;margin:12mm}
+@media print{
+  body{background:#fff}
+  .sheet{box-shadow:none;border-radius:0;margin:0;width:auto}
+  .hero,.section{box-shadow:none}
+  .search-row, .actions{display:none !important}
+  .site-footer{background:#fff;color:#000;border:0}
+}
+</style>
 </head>
 <body>
-  <div class="header">
-    <img src="logo.png" alt="Company Logo" id="logo">
-    <h1>Radiology Specialist Contact</h1>
-  </div>
 
-  <div class="directory-container">
-    <div class="search-container">
-      <label for="searchInput">Search:</label>
-      <input type="text" id="searchInput" onkeyup="searchDirectory()" placeholder="Name, ID, or Branch..">
+<div class="sheet">
+  <div class="topbar">
+    <div class="brand">
+      <div class="logo-pill">
+        <img src="logo.png" alt="Company Logo" id="logo">
+      </div>
     </div>
-
-    <table class="directory">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Doctor name</th>
-          <th>Position</th>
-          <th>Contact</th>
-          <th>Branch</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Branch: OLAYA -->
-        <tr>
-          <td data-label="ID">415626</td>
-          <td data-label="Doctor name">Dr. Amira Karam</td>
-          <td data-label="Position">Specialist Radiologist</td>
-          <td data-label="Contact">0530775814</td>
-          <td data-label="Branch">OLAYA</td>
-        </tr>
-        <tr>
-          <td data-label="ID">425505</td>
-          <td data-label="Doctor name">Dr. Elrasheed Mohammed</td>
-          <td data-label="Position">Senior Specialist Radiologist</td>
-          <td data-label="Contact">0535254764</td>
-          <td data-label="Branch">OLAYA</td>
-        </tr>
-        <tr>
-          <td data-label="ID">7859</td>
-          <td data-label="Doctor name">Dr. Reem Ashry</td>
-          <td data-label="Position">Senior Specialist Radiologist</td>
-          <td data-label="Contact">0549302222</td>
-          <td data-label="Branch">OLAYA</td>
-        </tr>
-        <tr>
-          <td data-label="ID">269910</td>
-          <td data-label="Doctor name">Dr. Amr Hassan</td>
-          <td data-label="Position">Specialist Radiologist</td>
-          <td data-label="Contact">0544101562</td>
-          <td data-label="Branch">OLAYA</td>
-        </tr>
-        <tr>
-          <td data-label="ID">316683</td>
-          <td data-label="Doctor name">Dr. Diaa Shoulkamy</td>
-          <td data-label="Position">Senior Specialist Radiologist</td>
-          <td data-label="Contact">0508195446</td>
-          <td data-label="Branch">OLAYA</td>
-        </tr>
-        <tr>
-          <td data-label="ID">395870</td>
-          <td data-label="Doctor name">Dr. Amun Iqbal</td>
-          <td data-label="Position">Senior Specialist Radiologist</td>
-          <td data-label="Contact">0537946759</td>
-          <td data-label="Branch">OLAYA</td>
-        </tr>
-        <tr>
-          <td data-label="ID">398640</td>
-          <td data-label="Doctor name">Dr. Hafiza Mehrunnisa</td>
-          <td data-label="Position">Senior Specialist Radiologist</td>
-          <td data-label="Contact">0500430747</td>
-          <td data-label="Branch">OLAYA</td>
-        </tr>
-        <tr>
-          <td data-label="ID">406126</td>
-          <td data-label="Doctor name">Dr. Sehrish Khan</td>
-          <td data-label="Position">Specialist Radiologist</td>
-          <td data-label="Contact">0553616460</td>
-          <td data-label="Branch">OLAYA</td>
-        </tr>
-        <tr>
-          <td data-label="ID">7652</td>
-          <td data-label="Doctor name">Dr. Huda Mirza</td>
-          <td data-label="Position">Ultrasound Specialist</td>
-          <td data-label="Contact">0546425832</td>
-          <td data-label="Branch">OLAYA</td>
-        </tr>
-        <tr>
-          <td data-label="ID">7590</td>
-          <td data-label="Doctor name">Dr. Shehla Zeeshan</td>
-          <td data-label="Position">Ultrasound Specialist</td>
-          <td data-label="Contact">0530909754</td>
-          <td data-label="Branch">OLAYA</td>
-        </tr>
-        <tr>
-          <td data-label="ID">5427</td>
-          <td data-label="Doctor name">Dr. Muhammad Akhlaq</td>
-          <td data-label="Position">Ultrasound Specialist</td>
-          <td data-label="Contact">0535840023</td>
-          <td data-label="Branch">OLAYA</td>
-        </tr>
-        <!-- Branch: TAKHASUSSI -->
-        <tr>
-          <td data-label="ID">412163</td>
-          <td data-label="Doctor name">Dr. Yusuf Shalaby</td>
-          <td data-label="Position">Senior Specialist Radiologist</td>
-          <td data-label="Contact">0532965345</td>
-          <td data-label="Branch">TAKHASUSSI</td>
-        </tr>
-        <tr>
-          <td data-label="ID">412777</td>
-          <td data-label="Doctor name">Dr. Yasmeen Henein</td>
-          <td data-label="Position">Specialist Radiologist</td>
-          <td data-label="Contact">0532380715</td>
-          <td data-label="Branch">TAKHASUSSI</td>
-        </tr>
-        <tr>
-          <td data-label="ID">415469</td>
-          <td data-label="Doctor name">Dr. Sara Jaber</td>
-          <td data-label="Position">Senior Specialist Radiologist</td>
-          <td data-label="Contact">0539017807</td>
-          <td data-label="Branch">TAKHASUSSI</td>
-        </tr>
-        <tr>
-          <td data-label="ID">416124</td>
-          <td data-label="Doctor name">Dr. Faiza Hasan</td>
-          <td data-label="Position">Specialist Radiologist</td>
-          <td data-label="Contact">0501371614</td>
-          <td data-label="Branch">TAKHASUSSI</td>
-        </tr>
-        <tr>
-          <td data-label="ID">415165</td>
-          <td data-label="Doctor name">Dr. Anum Ali</td>
-          <td data-label="Position">Ultrasound Specialist</td>
-          <td data-label="Contact">0562206137</td>
-          <td data-label="Branch">TAKHASUSSI</td>
-        </tr>
-        <tr>
-          <td data-label="ID">14732</td>
-          <td data-label="Doctor name">Dr. Mohamed A.Majeed (Fadel)</td>
-          <td data-label="Position">Specialist Radiologist</td>
-          <td data-label="Contact">0582929904</td>
-          <td data-label="Branch">TAKHASUSSI</td>
-        </tr>
-        <tr>
-          <td data-label="ID">16922</td>
-          <td data-label="Doctor name">Dr. Shaima El Adl</td>
-          <td data-label="Position">Specialist Radiologist</td>
-          <td data-label="Contact">0581234255</td>
-          <td data-label="Branch">TAKHASUSSI</td>
-        </tr>
-        <tr>
-          <td data-label="ID">246556</td>
-          <td data-label="Doctor name">Dr. Israa Salih</td>
-          <td data-label="Position">Specialist Radiologist</td>
-          <td data-label="Contact">0544885531</td>
-          <td data-label="Branch">TAKHASUSSI</td>
-        </tr>
-        <tr>
-          <td data-label="ID">300024</td>
-          <td data-label="Doctor name">Dr. Mohamad Dergam (Dr.Yasser)</td>
-          <td data-label="Position">Senior Specialist Radiologist</td>
-          <td data-label="Contact">0556243179</td>
-          <td data-label="Branch">TAKHASUSSI</td>
-        </tr>
-        <tr>
-          <td data-label="ID">355482</td>
-          <td data-label="Doctor name">Dr. Mohammed Abdelfattah</td>
-          <td data-label="Position">Senior Specialist Radiologist</td>
-          <td data-label="Contact">0534002586</td>
-          <td data-label="Branch">TAKHASUSSI</td>
-        </tr>
-        <tr>
-          <td data-label="ID">363502</td>
-          <td data-label="Doctor name">Dr. Somaia Daffalla</td>
-          <td data-label="Position">Senior Specialist Radiologist</td>
-          <td data-label="Contact">0534157166</td>
-          <td data-label="Branch">TAKHASUSSI</td>
-        </tr>
-        <tr>
-          <td data-label="ID">368223</td>
-          <td data-label="Doctor name">Dr. Ahmed Kandeel</td>
-          <td data-label="Position">Senior Specialist Radiologist</td>
-          <td data-label="Contact">0533840957</td>
-          <td data-label="Branch">TAKHASUSSI</td>
-        </tr>
-        <tr>
-          <td data-label="ID">321982</td>
-          <td data-label="Doctor name">Dr. Awais Ahmed</td>
-          <td data-label="Position">Ultrasound Specialist</td>
-          <td data-label="Contact">0599122061</td>
-          <td data-label="Branch">TAKHASUSSI</td>
-        </tr>
-        <!-- Branch: QASSIM -->
-        <tr>
-          <td data-label="ID">281082</td>
-          <td data-label="Doctor name">Dr. Salem Balkhram</td>
-          <td data-label="Position">Specialist Radiologist</td>
-          <td data-label="Contact">0547009326</td>
-          <td data-label="Branch">QASSIM</td>
-        </tr>
-        <tr>
-          <td data-label="ID">376723</td>
-          <td data-label="Doctor name">Dr. Kamal Salem Bankaita</td>
-          <td data-label="Position">Senior Specialist Radiologist</td>
-          <td data-label="Contact">0539193768</td>
-          <td data-label="Branch">QASSIM</td>
-        </tr>
-        <tr>
-          <td data-label="ID">5334</td>
-          <td data-label="Doctor name">Dr. Erum Jamil</td>
-          <td data-label="Position">Ultrasound Specialist</td>
-          <td data-label="Contact">0595566539</td>
-          <td data-label="Branch">QASSIM</td>
-        </tr>
-        <!-- Branch: RAYYAN -->
-        <tr>
-          <td data-label="ID">421167</td>
-          <td data-label="Doctor name">Dr. Mohammed Hasan Jeeran</td>
-          <td data-label="Position">Specialist Radiologist</td>
-          <td data-label="Contact">0536224406</td>
-          <td data-label="Branch">RAYYAN</td>
-        </tr>
-        <tr>
-          <td data-label="ID">436825</td>
-          <td data-label="Doctor name">Dr. Shaikh Tafheem Ul Islam</td>
-          <td data-label="Position">Specialist Radiologist</td>
-          <td data-label="Contact">0590800379</td>
-          <td data-label="Branch">RAYYAN</td>
-        </tr>
-        <tr>
-          <td data-label="ID">13796</td>
-          <td data-label="Doctor name">Dr. Muadh Al Shargabi</td>
-          <td data-label="Position">Senior Specialist Radiologist</td>
-          <td data-label="Contact">0503808760</td>
-          <td data-label="Branch">RAYYAN</td>
-        </tr>
-        <tr>
-          <td data-label="ID">13534</td>
-          <td data-label="Doctor name">Dr. Mouhanad Al Kassar</td>
-          <td data-label="Position">Specialist Radiologist</td>
-          <td data-label="Contact">0549067535</td>
-          <td data-label="Branch">RAYYAN</td>
-        </tr>
-        <tr>
-          <td data-label="ID">247001</td>
-          <td data-label="Doctor name">Dr. Aya Abdalla</td>
-          <td data-label="Position">Senior Specialist Radiologist</td>
-          <td data-label="Contact">0591377103</td>
-          <td data-label="Branch">RAYYAN</td>
-        </tr>
-        <tr>
-          <td data-label="ID">265366</td>
-          <td data-label="Doctor name">Dr. AbdalBaset Mohammad Ammar</td>
-          <td data-label="Position">Specialist Radiologist</td>
-          <td data-label="Contact">0536185892</td>
-          <td data-label="Branch">RAYYAN</td>
-        </tr>
-        <tr>
-          <td data-label="ID">310582</td>
-          <td data-label="Doctor name">Dr. Mohamed Shokrey Ali</td>
-          <td data-label="Position">Specialist Radiologist</td>
-          <td data-label="Contact">0508817640</td>
-          <td data-label="Branch">RAYYAN</td>
-        </tr>
-        <tr>
-          <td data-label="ID">320705</td>
-          <td data-label="Doctor name">Dr. Amal Al-Haidary</td>
-          <td data-label="Position">Senior Specialist Radiologist</td>
-          <td data-label="Contact">0554153869</td>
-          <td data-label="Branch">RAYYAN</td>
-        </tr>
-        <tr>
-          <td data-label="ID">342902</td>
-          <td data-label="Doctor name">Dr. Omima Abdalla</td>
-          <td data-label="Position">Specialist Radiologist</td>
-          <td data-label="Contact">0552949861</td>
-          <td data-label="Branch">RAYYAN</td>
-        </tr>
-        <tr>
-          <td data-label="ID">371883</td>
-          <td data-label="Doctor name">Dr. Mariam Haneef</td>
-          <td data-label="Position">Specialist Radiologist</td>
-          <td data-label="Contact">0557652285</td>
-          <td data-label="Branch">RAYYAN</td>
-        </tr>
-        <tr>
-          <td data-label="ID">16183</td>
-          <td data-label="Doctor name">Dr. Ferdous Aljeroud</td>
-          <td data-label="Position">Specialist Radiologist</td>
-          <td data-label="Contact">0558360848</td>
-          <td data-label="Branch">RAYYAN</td>
-        </tr>
-        <!-- Branch: SWEIDI -->
-        <tr>
-          <td data-label="ID">156382</td>
-          <td data-label="Doctor name">Dr. Rahil Sayed</td>
-          <td data-label="Position">Specialist Radiologist</td>
-          <td data-label="Contact">0531933584</td>
-          <td data-label="Branch">SWEIDI</td>
-        </tr>
-        <tr>
-          <td data-label="ID">282204</td>
-          <td data-label="Doctor name">Dr. Abdullah Rashed</td>
-          <td data-label="Position">Specialist Radiologist</td>
-          <td data-label="Contact">0530617836</td>
-          <td data-label="Branch">SWEIDI</td>
-        </tr>
-        <tr>
-          <td data-label="ID">320005</td>
-          <td data-label="Doctor name">Dr. Basma Aboagoor</td>
-          <td data-label="Position">Senior Specialist Radiologist</td>
-          <td data-label="Contact">0556503393</td>
-          <td data-label="Branch">SWEIDI</td>
-        </tr>
-        <tr>
-          <td data-label="ID">359682</td>
-          <td data-label="Doctor name">Dr. Salma Aboudi</td>
-          <td data-label="Position">Senior Specialist Radiologist</td>
-          <td data-label="Contact">0547074770</td>
-          <td data-label="Branch">SWEIDI</td>
-        </tr>
-        <tr>
-          <td data-label="ID">399094</td>
-          <td data-label="Doctor name">Dr. Mohammed Wajid</td>
-          <td data-label="Position">Specialist Radiologist</td>
-          <td data-label="Contact">0537068491</td>
-          <td data-label="Branch">SWEIDI</td>
-        </tr>
-        <tr>
-          <td data-label="ID">415276</td>
-          <td data-label="Doctor name">Dr. Alaa Mohammad</td>
-          <td data-label="Position">Specialist Radiologist</td>
-          <td data-label="Contact">0565193012</td>
-          <td data-label="Branch">SWEIDI</td>
-        </tr>
-        <tr>
-          <td data-label="ID">422080</td>
-          <td data-label="Doctor name">Dr. Eman Ibrahem</td>
-          <td data-label="Position">Specialist Radiologist</td>
-          <td data-label="Contact">0540535562</td>
-          <td data-label="Branch">SWEIDI</td>
-        </tr>
-        <tr>
-          <td data-label="ID">430974</td>
-          <td data-label="Doctor name">Dr. Mohamed Abdalla Adam</td>
-          <td data-label="Position">Senior Specialist Radiologist</td>
-          <td data-label="Contact">0590530338</td>
-          <td data-label="Branch">SWEIDI</td>
-        </tr>
-        <tr>
-          <td data-label="ID">437665</td>
-          <td data-label="Doctor name">Dr. Asma Zeinhom</td>
-          <td data-label="Position">Specialist Radiologist</td>
-          <td data-label="Contact">0594020837</td>
-          <td data-label="Branch">SWEIDI</td>
-        </tr>
-        <!-- Branch: KHOBAR -->
-        <tr>
-          <td data-label="ID">422326</td>
-          <td data-label="Doctor name">Dr. Ahmed Diab</td>
-          <td data-label="Position">Specialist Radiologist</td>
-          <td data-label="Contact">0504179957</td>
-          <td data-label="Branch">KHOBAR</td>
-        </tr>
-        <tr>
-          <td data-label="ID">338163</td>
-          <td data-label="Doctor name">Dr. Wala Bani Hamad</td>
-          <td data-label="Position">Sr. Specialist Radiologist</td>
-          <td data-label="Contact">0570932209</td>
-          <td data-label="Branch">KHOBAR</td>
-        </tr>
-        <tr>
-          <td data-label="ID">351464</td>
-          <td data-label="Doctor name">Dr. Shumaila Memon</td>
-          <td data-label="Position">Specialist Radiologist</td>
-          <td data-label="Contact">0501212636</td>
-          <td data-label="Branch">KHOBAR</td>
-        </tr>
-        <tr>
-          <td data-label="ID">374463</td>
-          <td data-label="Doctor name">Dr. Nida Heetawala</td>
-          <td data-label="Position">Ultrasound Specialist</td>
-          <td data-label="Contact">0553360181</td>
-          <td data-label="Branch">KHOBAR</td>
-        </tr>
-        <tr>
-          <td data-label="ID">389324</td>
-          <td data-label="Doctor name">Dr. Shahad Izzeldin</td>
-          <td data-label="Position">Specialist Radiologist</td>
-          <td data-label="Contact">0550208517</td>
-          <td data-label="Branch">KHOBAR</td>
-        </tr>
-        <tr>
-          <td data-label="ID">397027</td>
-          <td data-label="Doctor name">Dr. Salman Siddiqi</td>
-          <td data-label="Position">Sr. Specialist Radiologist</td>
-          <td data-label="Contact">0590327701</td>
-          <td data-label="Branch">KHOBAR</td>
-        </tr>
-        <tr>
-          <td data-label="ID">397928</td>
-          <td data-label="Doctor name">Dr. Khaled Khairy Musa</td>
-          <td data-label="Position">Specialist Radiologist</td>
-          <td data-label="Contact">0552639927</td>
-          <td data-label="Branch">KHOBAR</td>
-        </tr>
-        <!-- Branch: NARJIS / GHADEER -->
-        <tr>
-          <td data-label="ID">409984</td>
-          <td data-label="Doctor name">Dr. Nagla Adam</td>
-          <td data-label="Position">Senior Specialist Radiologist</td>
-          <td data-label="Contact">0502316473</td>
-          <td data-label="Branch">NARJIS / GHADEER</td>
-        </tr>
-        <tr>
-          <td data-label="ID">390103</td>
-          <td data-label="Doctor name">Dr. Rudainah Hazam</td>
-          <td data-label="Position">Senior Specialist Radiologist</td>
-          <td data-label="Contact">0552627081</td>
-          <td data-label="Branch">NARJIS / GHADEER</td>
-        </tr>
-        <tr>
-          <td data-label="ID">395533</td>
-          <td data-label="Doctor name">Dr. Ahmed Younes</td>
-          <td data-label="Position">Senior Specialist Radiologist</td>
-          <td data-label="Contact">0537132385</td>
-          <td data-label="Branch">NARJIS / GHADEER</td>
-        </tr>
-        <tr>
-          <td data-label="ID">397261</td>
-          <td data-label="Doctor name">Dr. Mahmoud Gendy</td>
-          <td data-label="Position">Senior Specialist Radiologist</td>
-          <td data-label="Contact">0555634731</td>
-          <td data-label="Branch">NARJIS / GHADEER</td>
-        </tr>
-        <tr>
-          <td data-label="ID">398663</td>
-          <td data-label="Doctor name">Dr. Yasser Al Sebaie</td>
-          <td data-label="Position">Specialist Radiologist</td>
-          <td data-label="Contact">0532692530</td>
-          <td data-label="Branch">NARJIS / GHADEER</td>
-        </tr>
-        <tr>
-          <td data-label="ID">405066</td>
-          <td data-label="Doctor name">Dr. Jia Kumar</td>
-          <td data-label="Position">Specialist Radiologist</td>
-          <td data-label="Contact">0509228387</td>
-          <td data-label="Branch">NARJIS / GHADEER</td>
-        </tr>
-        <!-- Branch: JEDDAH -->
-        <tr>
-          <td data-label="ID">418510</td>
-          <td data-label="Doctor name">Dr. Sanober Omer</td>
-          <td data-label="Position">Specialist Radiologist</td>
-          <td data-label="Contact">0544115194</td>
-          <td data-label="Branch">JEDDAH</td>
-        </tr>
-        <tr>
-          <td data-label="ID">410103</td>
-          <td data-label="Doctor name">Dr. Sana Ashraf</td>
-          <td data-label="Position">Ultrasound Specialist</td>
-          <td data-label="Contact">0548281822</td>
-          <td data-label="Branch">JEDDAH</td>
-        </tr>
-        <tr>
-          <td data-label="ID">395129</td>
-          <td data-label="Doctor name">Dr. Mohammed Ali Makhashin</td>
-          <td data-label="Position">Sr. Specialist Radiologist</td>
-          <td data-label="Contact">0548168012</td>
-          <td data-label="Branch">JEDDAH</td>
-        </tr>
-        <tr>
-          <td data-label="ID">385884</td>
-          <td data-label="Doctor name">Dr. Miran Ibrahim Hassan</td>
-          <td data-label="Position">Sr. Specialist Radiologist</td>
-          <td data-label="Contact">0535797340</td>
-          <td data-label="Branch">JEDDAH</td>
-        </tr>
-        <tr>
-          <td data-label="ID">395935</td>
-          <td data-label="Doctor name">Dr. Ahmed Gomaa</td>
-          <td data-label="Position">Ultrasound Specialist</td>
-          <td data-label="Contact">0502644828</td>
-          <td data-label="Branch">JEDDAH</td>
-        </tr>
-        <!-- Branch: SAHAFA -->
-        <tr>
-          <td data-label="ID">412927</td>
-          <td data-label="Doctor name">Dr. Omnia Younes</td>
-          <td data-label="Position">Senior Specialist Radiologist</td>
-          <td data-label="Contact">0546216312</td>
-          <td data-label="Branch">SAHAFA</td>
-        </tr>
-        <tr>
-          <td data-label="ID">419108</td>
-          <td data-label="Doctor name">Dr. Arwa Albareda</td>
-          <td data-label="Position">Specialist Radiologist</td>
-          <td data-label="Contact">0537382942</td>
-          <td data-label="Branch">SAHAFA</td>
-        </tr>
-        <tr>
-          <td data-label="ID">385370</td>
-          <td data-label="Doctor name">Dr. Islam Fakhouri</td>
-          <td data-label="Position">Sr. Specialist Radiologist</td>
-          <td data-label="Contact">0532060114</td>
-          <td data-label="Branch">SAHAFA</td>
-        </tr>
-        <tr>
-          <td data-label="ID">401466</td>
-          <td data-label="Doctor name">Dr. Mohammed Al Sayyar</td>
-          <td data-label="Position">Sr. Specialist Radiologist</td>
-          <td data-label="Contact">0544777753</td>
-          <td data-label="Branch">SAHAFA</td>
-        </tr>
-        <tr>
-          <td data-label="ID">403263</td>
-          <td data-label="Doctor name">Dr. Mostafa Abdalla Amin</td>
-          <td data-label="Position">Specialist Radiators</td>
-          <td data-label="Contact">0501758196</td>
-          <td data-label="Branch">SAHAFA</td>
-        </tr>
-        <tr>
-          <td data-label="ID">396873</td>
-          <td data-label="Doctor name">Dr. Wafa Shakil</td>
-          <td data-label="Position">Ultrasound Specialist</td>
-          <td data-label="Contact">0598923775</td>
-          <td data-label="Branch">SAHAFA</td>
-        </tr>
-        <tr>
-          <td data-label="ID">397701</td>
-          <td data-label="Doctor name">Dr. Nafees Abdul Hakeem</td>
-          <td data-label="Position">Ultrasound Specialist</td>
-          <td data-label="Contact">0598720560</td>
-          <td data-label="Branch">SAHAFA</td>
-        </tr>
-        <tr>
-          <td data-label="ID">405910</td>
-          <td data-label="Doctor name">Dr. Amina Suleman Ashraf</td>
-          <td data-label="Position">Ultrasound Specialist</td>
-          <td data-label="Contact">0504905897</td>
-          <td data-label="Branch">SAHAFA</td>
-        </tr>
-        <!-- Branch: HAMRA -->
-        <tr>
-          <td data-label="ID">414927</td>
-          <td data-label="Doctor name">Dr. Sara Haider</td>
-          <td data-label="Position">Specialist Radiologist</td>
-          <td data-label="Contact">0501575079</td>
-          <td data-label="Branch">HAMRA</td>
-        </tr>
-        <tr>
-          <td data-label="ID">425249</td>
-          <td data-label="Doctor name">Dr. Balqis Manasra</td>
-          <td data-label="Position">Senior Specialist Radiologist</td>
-          <td data-label="Contact">0567099145</td>
-          <td data-label="Branch">HAMRA</td>
-        </tr>
-        <tr>
-          <td data-label="ID">426745</td>
-          <td data-label="Doctor name">Dr. Mostafa Aboelyazid El-Feky</td>
-          <td data-label="Position">Senior Specialist Radiologist</td>
-          <td data-label="Contact">0583808567</td>
-          <td data-label="Branch">HAMRA</td>
-        </tr>
-        <tr>
-          <td data-label="ID">432371</td>
-          <td data-label="Doctor name">Dr. Ahmad Abdelhalim Alkhums</td>
-          <td data-label="Position">Senior Specialist Radiologist</td>
-          <td data-label="Contact">0582950924</td>
-          <td data-label="Branch">HAMRA</td>
-        </tr>
-        <!-- Branch: KHARJ -->
-        <tr>
-          <td data-label="ID">434998</td>
-          <td data-label="Doctor name">Dr. Fouzia Rahman</td>
-          <td data-label="Position">Specialist Radiologist</td>
-          <td data-label="Contact">0536032205</td>
-          <td data-label="Branch">KHARJ</td>
-        </tr>
-        <tr>
-          <td data-label="ID">435388</td>
-          <td data-label="Doctor name">Dr. Wadie Al Bidarat</td>
-          <td data-label="Position">Specialist Radiologist</td>
-          <td data-label="Contact">0536507590</td>
-          <td data-label="Branch">KHARJ</td>
-        </tr>
-        <tr>
-          <td data-label="ID">420138</td>
-          <td data-label="Doctor name">Dr. Madeeha Tanveer</td>
-          <td data-label="Position">Specialist Radiologist</td>
-          <td data-label="Contact">0553809301</td>
-          <td data-label="Branch">KHARJ</td>
-        </tr>
-        <tr>
-          <td data-label="ID">437905</td>
-          <td data-label="Doctor name">Dr. Muhammad Qasim</td>
-          <td data-label="Position">Specialist Radiologist</td>
-          <td data-label="Contact">0502361336</td>
-          <td data-label="Branch">KHARJ</td>
-        </tr>
-        <tr>
-          <td data-label="ID">437898</td>
-          <td data-label="Doctor name">Dr. Ahmed Gamaleldin</td>
-          <td data-label="Position">Ultrasound Specialist</td>
-          <td data-label="Contact">0503092589</td>
-          <td data-label="Branch">KHARJ</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="region-pill">Radiology Specialists – HMG</div>
   </div>
 
-  <div class="back-button-container">
-    <a href="index.html" class="button">Back</a>
+  <div class="container">
+    <section class="hero">
+      <h1>Radiology Specialists Contact Directory</h1>
+      <div class="meta">Live search by Name / ID / Position / Branch</div>
+    </section>
+
+    <section class="section">
+      <div class="head">Specialists Directory</div>
+      <div class="pad">
+        <div class="search-row">
+          <label for="searchInput"><i class="fa-solid fa-magnifying-glass"></i> Search:</label>
+          <input type="text" id="searchInput" onkeyup="searchDirectory()" placeholder="Type Name, ID, Position, or Branch">
+        </div>
+
+        <div class="table-wrap">
+          <table class="directory">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Doctor's Name</th>
+                <th>Position</th>
+                <th>Contact</th>
+                <th>Branch</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- OLAYA -->
+              <tr><td data-label="ID">7859</td><td data-label="Doctor's Name">Dr. Reem Ashry</td><td data-label="Position">Senior Specialist Radiologist</td><td data-label="Contact">0549302222</td><td data-label="Branch">OLAYA</td></tr>
+              <tr><td data-label="ID">316683</td><td data-label="Doctor's Name">Dr. Diaa Shoulkamy</td><td data-label="Position">Senior Specialist Radiologist</td><td data-label="Contact">0508195446</td><td data-label="Branch">OLAYA</td></tr>
+              <tr><td data-label="ID">395870</td><td data-label="Doctor's Name">Dr. Amun Iqbal</td><td data-label="Position">Senior Specialist Radiologist</td><td data-label="Contact">0537946759</td><td data-label="Branch">OLAYA</td></tr>
+              <tr><td data-label="ID">398640</td><td data-label="Doctor's Name">Dr. Hafiza Mehrunnisa</td><td data-label="Position">Senior Specialist Radiologist</td><td data-label="Contact">0500430747</td><td data-label="Branch">OLAYA</td></tr>
+              <tr><td data-label="ID">406126</td><td data-label="Doctor's Name">Dr. Sehrish Khan</td><td data-label="Position">Specialist Radiologist</td><td data-label="Contact">0553616460</td><td data-label="Branch">OLAYA</td></tr>
+              <tr><td data-label="ID">415626</td><td data-label="Doctor's Name">Dr. Amira Karam</td><td data-label="Position">Specialist Radiologist</td><td data-label="Contact">0502296069</td><td data-label="Branch">OLAYA</td></tr>
+              <tr><td data-label="ID">425505</td><td data-label="Doctor's Name">Dr. Elrasheed Mohammed</td><td data-label="Position">Senior Specialist Radiologist</td><td data-label="Contact">0535254764</td><td data-label="Branch">OLAYA</td></tr>
+              <tr><td data-label="ID">7652</td><td data-label="Doctor's Name">Dr. Huda Mirza</td><td data-label="Position">Ultrasound Specialist</td><td data-label="Contact">0546425832</td><td data-label="Branch">OLAYA</td></tr>
+              <tr><td data-label="ID">5427</td><td data-label="Doctor's Name">Dr. Muhammad Akhlaq</td><td data-label="Position">Ultrasound Specialist</td><td data-label="Contact">0535840023</td><td data-label="Branch">OLAYA</td></tr>
+              <tr><td data-label="ID">440005</td><td data-label="Doctor's Name">Dr. Saima Bibi</td><td data-label="Position">Ultrasound Specialist</td><td data-label="Contact">0564418284</td><td data-label="Branch">OLAYA</td></tr>
+
+              <!-- TAKHASUSSI -->
+              <tr><td data-label="ID">14732</td><td data-label="Doctor's Name">Dr. Mohamed A.Majeed (Fadel)</td><td data-label="Position">Specialist Radiologist</td><td data-label="Contact">0582929904</td><td data-label="Branch">TAKHASUSSI</td></tr>
+              <tr><td data-label="ID">16922</td><td data-label="Doctor's Name">Dr. Shaima El Adl</td><td data-label="Position">Specialist Radiologist</td><td data-label="Contact">0581234255</td><td data-label="Branch">TAKHASUSSI</td></tr>
+              <tr><td data-label="ID">246556</td><td data-label="Doctor's Name">Dr. Israa Salih</td><td data-label="Position">Specialist Radiologist</td><td data-label="Contact">0544885531</td><td data-label="Branch">TAKHASUSSI</td></tr>
+              <tr><td data-label="ID">355482</td><td data-label="Doctor's Name">Dr. Mohammed Abdelfattah</td><td data-label="Position">Senior Specialist Radiologist</td><td data-label="Contact">0534002586</td><td data-label="Branch">TAKHASUSSI</td></tr>
+              <tr><td data-label="ID">363502</td><td data-label="Doctor's Name">Dr. Somaia Daffalla</td><td data-label="Position">Senior Specialist Radiologist</td><td data-label="Contact">0534157166</td><td data-label="Branch">TAKHASUSSI</td></tr>
+              <tr><td data-label="ID">368223</td><td data-label="Doctor's Name">Dr. Ahmed Kandeel</td><td data-label="Position">Senior Specialist Radiologist</td><td data-label="Contact">0533840957</td><td data-label="Branch">TAKHASUSSI</td></tr>
+              <tr><td data-label="ID">321982</td><td data-label="Doctor's Name">Dr. Awais Ahmed</td><td data-label="Position">Ultrasound Specialist</td><td data-label="Contact">0599122061</td><td data-label="Branch">TAKHASUSSI</td></tr>
+
+              <!-- TAKHASUSSI – MATERNITY -->
+              <tr><td data-label="ID">412163</td><td data-label="Doctor's Name">Dr. Yusuf Shalaby</td><td data-label="Position">Senior Specialist Radiologist</td><td data-label="Contact">0532965345</td><td data-label="Branch">TAKHASUSSI – MATERNITY</td></tr>
+              <tr><td data-label="ID">412777</td><td data-label="Doctor's Name">Dr. Yasmeen Henein</td><td data-label="Position">Specialist Radiologist</td><td data-label="Contact">0532380715</td><td data-label="Branch">TAKHASUSSI – MATERNITY</td></tr>
+              <tr><td data-label="ID">415469</td><td data-label="Doctor's Name">Dr. Sara Jaber</td><td data-label="Position">Senior Specialist Radiologist</td><td data-label="Contact">0539017807</td><td data-label="Branch">TAKHASUSSI – MATERNITY</td></tr>
+              <tr><td data-label="ID">416124</td><td data-label="Doctor's Name">Dr. Faiza Hasan</td><td data-label="Position">Specialist Radiologist</td><td data-label="Contact">0501371614</td><td data-label="Branch">TAKHASUSSI – MATERNITY</td></tr>
+              <tr><td data-label="ID">415165</td><td data-label="Doctor's Name">Dr. Anum Ali</td><td data-label="Position">Ultrasound Specialist</td><td data-label="Contact">0562206137</td><td data-label="Branch">TAKHASUSSI – MATERNITY</td></tr>
+
+              <!-- QASSIM -->
+              <tr><td data-label="ID">281082</td><td data-label="Doctor's Name">Dr. Salem Balkhram</td><td data-label="Position">Specialist Radiologist</td><td data-label="Contact">0547009326</td><td data-label="Branch">QASSIM</td></tr>
+              <tr><td data-label="ID">376723</td><td data-label="Doctor's Name">Dr. Kamal Salem Bankaita</td><td data-label="Position">Senior Specialist Radiologist</td><td data-label="Contact">0539193768</td><td data-label="Branch">QASSIM</td></tr>
+              <tr><td data-label="ID">5334</td><td data-label="Doctor's Name">Dr. Erum Jamil</td><td data-label="Position">Ultrasound Specialist</td><td data-label="Contact">0595566539</td><td data-label="Branch">QASSIM</td></tr>
+
+              <!-- RAYYAN -->
+              <tr><td data-label="ID">13796</td><td data-label="Doctor's Name">Dr. Muadh Al Shargabi</td><td data-label="Position">Senior Specialist Radiologist</td><td data-label="Contact">0503808760</td><td data-label="Branch">RAYYAN</td></tr>
+              <tr><td data-label="ID">247001</td><td data-label="Doctor's Name">Dr. Aya Abdalla</td><td data-label="Position">Senior Specialist Radiologist</td><td data-label="Contact">0591377103</td><td data-label="Branch">RAYYAN</td></tr>
+              <tr><td data-label="ID">265366</td><td data-label="Doctor's Name">Dr. AbdalBaset Mohammad Ammar</td><td data-label="Position">Specialist Radiologist</td><td data-label="Contact">0536185892</td><td data-label="Branch">RAYYAN</td></tr>
+              <tr><td data-label="ID">342902</td><td data-label="Doctor's Name">Dr. Omima Abdalla</td><td data-label="Position">Specialist Radiologist</td><td data-label="Contact">0552949861</td><td data-label="Branch">RAYYAN</td></tr>
+              <tr><td data-label="ID">371883</td><td data-label="Doctor's Name">Dr. Mariam Haneef</td><td data-label="Position">Specialist Radiologist</td><td data-label="Contact">0557652285</td><td data-label="Branch">RAYYAN</td></tr>
+              <tr><td data-label="ID">421167</td><td data-label="Doctor's Name">Dr. Mohammed Hasan Jeeran</td><td data-label="Position">Specialist Radiologist</td><td data-label="Contact">0536224406</td><td data-label="Branch">RAYYAN</td></tr>
+              <tr><td data-label="ID">436825</td><td data-label="Doctor's Name">Dr. Shaikh Tafheem Ul Islam</td><td data-label="Position">Specialist Radiologist</td><td data-label="Contact">0590800379</td><td data-label="Branch">RAYYAN</td></tr>
+              <tr><td data-label="ID">16183</td><td data-label="Doctor's Name">Dr. Ferdous Aljeroud</td><td data-label="Position">Specialist Radiologist</td><td data-label="Contact">0558360848</td><td data-label="Branch">RAYYAN</td></tr>
+
+              <!-- SWEIDI -->
+              <tr><td data-label="ID">156382</td><td data-label="Doctor's Name">Dr. Rahil Sayed</td><td data-label="Position">Specialist Radiologist</td><td data-label="Contact">0531933584</td><td data-label="Branch">SWEIDI</td></tr>
+              <tr><td data-label="ID">282204</td><td data-label="Doctor's Name">Dr. Abdullah Rashed</td><td data-label="Position">Specialist Radiologist</td><td data-label="Contact">0530617836</td><td data-label="Branch">SWEIDI</td></tr>
+              <tr><td data-label="ID">320005</td><td data-label="Doctor's Name">Dr. Basma Aboagoor</td><td data-label="Position">Senior Specialist Radiologist</td><td data-label="Contact">0556503393</td><td data-label="Branch">SWEIDI</td></tr>
+              <tr><td data-label="ID">359682</td><td data-label="Doctor's Name">Dr. Salma Aboudi</td><td data-label="Position">Senior Specialist Radiologist</td><td data-label="Contact">0547074770</td><td data-label="Branch">SWEIDI</td></tr>
+              <tr><td data-label="ID">399094</td><td data-label="Doctor's Name">Dr. Mohammed Wajid</td><td data-label="Position">Specialist Radiologist</td><td data-label="Contact">0537068491</td><td data-label="Branch">SWEIDI</td></tr>
+              <tr><td data-label="ID">415276</td><td data-label="Doctor's Name">Dr. Alaa Mohammad</td><td data-label="Position">Specialist Radiologist</td><td data-label="Contact">0565193012</td><td data-label="Branch">SWEIDI</td></tr>
+              <tr><td data-label="ID">422080</td><td data-label="Doctor's Name">Dr. Eman Ibrahem</td><td data-label="Position">Specialist Radiologist</td><td data-label="Contact">0540535562</td><td data-label="Branch">SWEIDI</td></tr>
+              <tr><td data-label="ID">430974</td><td data-label="Doctor's Name">Dr. Mohamed Abdalla Adam</td><td data-label="Position">Senior Specialist Radiologist</td><td data-label="Contact">0590530338</td><td data-label="Branch">SWEIDI</td></tr>
+              <tr><td data-label="ID">437665</td><td data-label="Doctor's Name">Dr. Asma Zeinhom</td><td data-label="Position">Specialist Radiologist</td><td data-label="Contact">0594020837</td><td data-label="Branch">SWEIDI</td></tr>
+
+              <!-- KHOBAR -->
+              <tr><td data-label="ID">338163</td><td data-label="Doctor's Name">Dr. Wala Bani Hamad</td><td data-label="Position">Sr. Specialist Radiologist</td><td data-label="Contact">0570932209</td><td data-label="Branch">KHOBAR</td></tr>
+              <tr><td data-label="ID">351464</td><td data-label="Doctor's Name">Dr. Shumaila Memon</td><td data-label="Position">Specialist Radiologist</td><td data-label="Contact">0501212636</td><td data-label="Branch">KHOBAR</td></tr>
+              <tr><td data-label="ID">389324</td><td data-label="Doctor's Name">Dr. Shahad Izzeldin</td><td data-label="Position">Specialist Radiologist</td><td data-label="Contact">0550208517</td><td data-label="Branch">KHOBAR</td></tr>
+              <tr><td data-label="ID">397027</td><td data-label="Doctor's Name">Dr. Salman Siddiqi</td><td data-label="Position">Sr. Specialist Radiologist</td><td data-label="Contact">0590327701</td><td data-label="Branch">KHOBAR</td></tr>
+              <tr><td data-label="ID">397928</td><td data-label="Doctor's Name">Dr. Khaled Khairy Musa</td><td data-label="Position">Specialist Radiologist</td><td data-label="Contact">0552639927</td><td data-label="Branch">KHOBAR</td></tr>
+              <tr><td data-label="ID">422326</td><td data-label="Doctor's Name">Dr. Ahmed Diab</td><td data-label="Position">Specialist Radiologist</td><td data-label="Contact">0504179957</td><td data-label="Branch">KHOBAR</td></tr>
+              <tr><td data-label="ID">374463</td><td data-label="Doctor's Name">Dr. Nida Heetawala</td><td data-label="Position">Ultrasound Specialist</td><td data-label="Contact">0553360181</td><td data-label="Branch">KHOBAR</td></tr>
+
+              <!-- JEDDAH-FAYHA -->
+              <tr><td data-label="ID">395129</td><td data-label="Doctor's Name">Dr. Mohammed Ali Makhashin</td><td data-label="Position">Sr. Specialist Radiologist</td><td data-label="Contact">0548168012</td><td data-label="Branch">JEDDAH-FAYHA</td></tr>
+              <tr><td data-label="ID">385884</td><td data-label="Doctor's Name">Dr. Miran Ibrahim Hassan</td><td data-label="Position">Sr. Specialist Radiologist</td><td data-label="Contact">0535797340</td><td data-label="Branch">JEDDAH-FAYHA</td></tr>
+              <tr><td data-label="ID">418510</td><td data-label="Doctor's Name">Dr. Sanober Omer</td><td data-label="Position">Specialist Radiologist</td><td data-label="Contact">0544115194</td><td data-label="Branch">JEDDAH-FAYHA</td></tr>
+              <tr><td data-label="ID">395935</td><td data-label="Doctor's Name">Dr. Ahmed Gomaa</td><td data-label="Position">Ultrasound Specialist</td><td data-label="Contact">0502644828</td><td data-label="Branch">JEDDAH-FAYHA</td></tr>
+              <tr><td data-label="ID">410103</td><td data-label="Doctor's Name">Dr. Sana Ashraf</td><td data-label="Position">Ultrasound Specialist</td><td data-label="Contact">0548281822</td><td data-label="Branch">JEDDAH-FAYHA</td></tr>
+
+              <!-- JEDDAH-MUHAMMADIYA -->
+              <tr><td data-label="ID">438164</td><td data-label="Doctor's Name">Dr. Hamza Fayed</td><td data-label="Position">Sr. Specialist Radiologist</td><td data-label="Contact">0537663507</td><td data-label="Branch">JEDDAH-MUHAMMADIYA</td></tr>
+              <tr><td data-label="ID">444422</td><td data-label="Doctor's Name">Dr. Mosa Amer</td><td data-label="Position">Sr. Specialist Radiologist</td><td data-label="Contact">0503244607</td><td data-label="Branch">JEDDAH-MUHAMMADIYA</td></tr>
+              <tr><td data-label="ID">444820</td><td data-label="Doctor's Name">Dr. Muhammad Jamil</td><td data-label="Position">Sr. Specialist Radiologist</td><td data-label="Contact">0500142254</td><td data-label="Branch">JEDDAH-MUHAMMADIYA</td></tr>
+              <tr><td data-label="ID">447852</td><td data-label="Doctor's Name">Dr. Sarah Hussein</td><td data-label="Position">Specialist Radiologist</td><td data-label="Contact">0592772737</td><td data-label="Branch">JEDDAH-MUHAMMADIYA</td></tr>
+
+              <!-- SAHAFA -->
+              <tr><td data-label="ID">385370</td><td data-label="Doctor's Name">Dr. Islam Fakhouri</td><td data-label="Position">Sr. Specialist Radiologist</td><td data-label="Contact">0532060114</td><td data-label="Branch">SAHAFA</td></tr>
+              <tr><td data-label="ID">403263</td><td data-label="Doctor's Name">Dr. Mostafa Abdalla Amin</td><td data-label="Position">Specialist Radiologist</td><td data-label="Contact">0501758196</td><td data-label="Branch">SAHAFA</td></tr>
+              <tr><td data-label="ID">412927</td><td data-label="Doctor's Name">Dr. Omnia Younes</td><td data-label="Position">Sr. Specialist Radiologist</td><td data-label="Contact">0546216312</td><td data-label="Branch">SAHAFA</td></tr>
+              <tr><td data-label="ID">419108</td><td data-label="Doctor's Name">Dr. Arwa Albareda</td><td data-label="Position">Specialist Radiologist</td><td data-label="Contact">0537382942</td><td data-label="Branch">SAHAFA</td></tr>
+              <tr><td data-label="ID">447029</td><td data-label="Doctor's Name">Dr. Asaf Ali Kammar</td><td data-label="Position">Specialist Radiologist</td><td data-label="Contact">0553068912</td><td data-label="Branch">SAHAFA</td></tr>
+              <tr><td data-label="ID">396873</td><td data-label="Doctor's Name">Dr. Wafa Shakil</td><td data-label="Position">Ultrasound Specialist</td><td data-label="Contact">0598923775</td><td data-label="Branch">SAHAFA</td></tr>
+
+              <!-- HAMRA -->
+              <tr><td data-label="ID">414927</td><td data-label="Doctor's Name">Dr. Sara Haider</td><td data-label="Position">Specialist Radiologist</td><td data-label="Contact">0501575079</td><td data-label="Branch">HAMRA</td></tr>
+              <tr><td data-label="ID">425249</td><td data-label="Doctor's Name">Dr. Balqis Manasra</td><td data-label="Position">Senior Specialist Radiologist</td><td data-label="Contact">0567099145</td><td data-label="Branch">HAMRA</td></tr>
+              <tr><td data-label="ID">426745</td><td data-label="Doctor's Name">Dr. Mostafa Aboelyazid El-Feky</td><td data-label="Position">Senior Specialist Radiologist</td><td data-label="Contact">0583808567</td><td data-label="Branch">HAMRA</td></tr>
+              <tr><td data-label="ID">432371</td><td data-label="Doctor's Name">Dr. Ahmad Abdelhalim Alkhums</td><td data-label="Position">Senior Specialist Radiologist</td><td data-label="Contact">0582950924</td><td data-label="Branch">HAMRA</td></tr>
+
+              <!-- KHARJ -->
+              <tr><td data-label="ID">420138</td><td data-label="Doctor's Name">Dr. Madeeha Tanveer</td><td data-label="Position">Specialist Radiologist</td><td data-label="Contact">0505400188</td><td data-label="Branch">KHARJ</td></tr>
+              <tr><td data-label="ID">434998</td><td data-label="Doctor's Name">Dr. Fouzia Rahman</td><td data-label="Position">Specialist Radiologist</td><td data-label="Contact">0506575126</td><td data-label="Branch">KHARJ</td></tr>
+              <tr><td data-label="ID">437905</td><td data-label="Doctor's Name">Dr. Muhammad Qasim</td><td data-label="Position">Specialist Radiologist</td><td data-label="Contact">0502361330</td><td data-label="Branch">KHARJ</td></tr>
+              <tr><td data-label="ID">437898</td><td data-label="Doctor's Name">Dr. Ahmed Gamal Eldin</td><td data-label="Position">Ultrasound Specialist</td><td data-label="Contact">0503092589</td><td data-label="Branch">KHARJ</td></tr>
+              <tr><td data-label="ID">440268</td><td data-label="Doctor's Name">Dr. Hira Arif</td><td data-label="Position">Ultrasound Specialist</td><td data-label="Contact">0539232437</td><td data-label="Branch">KHARJ</td></tr>
+
+              <!-- NARJIS -->
+              <tr><td data-label="ID">390103</td><td data-label="Doctor's Name">Dr. Rudainah Hazam</td><td data-label="Position">Senior Specialist Radiologist</td><td data-label="Contact">0552627081</td><td data-label="Branch">NARJIS</td></tr>
+              <tr><td data-label="ID">397261</td><td data-label="Doctor's Name">Dr. Mahmoud Gendy</td><td data-label="Position">Senior Specialist Radiologist</td><td data-label="Contact">0555634731</td><td data-label="Branch">NARJIS</td></tr>
+              <tr><td data-label="ID">405066</td><td data-label="Doctor's Name">Dr. Jia Kumar</td><td data-label="Position">Specialist Radiologist</td><td data-label="Contact">0509228387</td><td data-label="Branch">NARJIS</td></tr>
+              <tr><td data-label="ID">409984</td><td data-label="Doctor's Name">Dr. Nagla Adam</td><td data-label="Position">Senior Specialist Radiologist</td><td data-label="Contact">0502316473</td><td data-label="Branch">NARJIS</td></tr>
+
+              <!-- GHADEER -->
+              <tr><td data-label="ID">395533</td><td data-label="Doctor's Name">Dr. Ahmed Younes</td><td data-label="Position">Senior Specialist Radiologist</td><td data-label="Contact">0563430150</td><td data-label="Branch">GHADEER</td></tr>
+              <tr><td data-label="ID">398663</td><td data-label="Doctor's Name">Dr. Yasser Al Sebaie</td><td data-label="Position">Specialist Radiologist</td><td data-label="Contact">0532692530</td><td data-label="Branch">GHADEER</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="actions">
+          <a href="index.html" class="button"><i class="fa-solid fa-arrow-rotate-left"></i> Back</a>
+        </div>
+      </div>
+    </section>
   </div>
 
-  <div class="footer">
-    &copy; 2025 Abdullah AlQarni. All rights reserved.
-  </div>
+  <footer class="site-footer">
+    <div class="copyright">© 2025 Abdullah AlQarni. All rights reserved.</div>
+  </footer>
+</div>
 
-  <script>
-    function searchDirectory() {
-      var input, filter, table, tr, td, txtValue;
-      input = document.getElementById("searchInput");
-      filter = input.value.toUpperCase();
-      table = document.querySelector(".directory");
-      tr = table.getElementsByTagName("tr");
-      for (var i = 0; i < tr.length; i++) {
-        var cells = tr[i].getElementsByTagName("td");
-        var rowText = "";
-        for (var j = 0; j < cells.length; j++) {
-          rowText += cells[j].textContent || cells[j].innerText;
-        }
-        if (rowText.toUpperCase().indexOf(filter) > -1) {
-          tr[i].style.display = "";
-        } else {
-          tr[i].style.display = "none";
-        }
+<script>
+/* Live search across all columns */
+function searchDirectory(){
+  var input=document.getElementById("searchInput");
+  var filter=(input.value||"").toUpperCase();
+  var table=document.querySelector(".directory");
+  var tr=table.getElementsByTagName("tr");
+  for(var i=0;i<tr.length;i++){
+    var td=tr[i].getElementsByTagName("td");
+    if(td && td.length){
+      var match=false;
+      for(var j=0;j<td.length;j++){
+        var txt=(td[j].textContent||td[j].innerText||"").toUpperCase();
+        if(txt.indexOf(filter)>-1){match=true;break;}
       }
+      tr[i].style.display=match?"":"none";
     }
-  </script>
+  }
+}
+</script>
 </body>
 </html>
