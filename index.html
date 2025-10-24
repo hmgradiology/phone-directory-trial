@@ -41,7 +41,7 @@ html,body{
 /* ===== Shell ===== */
 .sheet{
   width:min(100%, var(--page-w));
-  margin:48px auto 64px;
+  margin:48px auto 64px;       /* يخلق فراغ قبل الهيدر وبعد الفوتر على الشاشات الكبيرة */
   background:var(--white);
   border-radius:var(--radius-lg);
   box-shadow:var(--shadow-page);
@@ -159,6 +159,18 @@ html,body{
 .site-footer .copyright{
   font-weight:700; letter-spacing:.2px; font-size:14.5px;
   white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+
+/* ===== Mobile spacing tweak (ONLY phones) ===== */
+@media (max-width: 640px){
+  /* فراغ واضح فوق الهيدر وتحت الفوتر، مع مراعاة النوتش */
+  .sheet{
+    margin:
+      calc(env(safe-area-inset-top, 0px) + 28px)
+      12px
+      calc(env(safe-area-inset-bottom, 0px) + 140px);
+    border-radius:18px;
+  }
 }
 
 /* Print */
