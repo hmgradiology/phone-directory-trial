@@ -208,6 +208,28 @@ html,body{
   white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
 }
 
+/* ===== Mobile behavior: header TOP, footer BOTTOM ===== */
+@media (max-width: 640px){
+  html, body { height:100%; }
+  body { display:block; }
+
+  .sheet{
+    margin:0;                  /* لا مسافة فوق/تحت */
+    min-height:100dvh;         /* طول شاشة الجوال */
+    border-radius:0;           /* يلتصق بالحواف */
+    box-shadow:none;           /* بدون ظل على الجوال */
+    display:flex;
+    flex-direction:column;
+  }
+
+  .container{ flex:1 0 auto; } /* يدفع الفوتر لأسفل */
+  .site-footer{
+    margin-top:auto;
+    border-top-left-radius:0;
+    border-top-right-radius:0;
+  }
+}
+
 /* Print friendly */
 @page{size:A4 portrait;margin:12mm}
 @media print{
@@ -305,7 +327,7 @@ html,body{
 
               <!-- SWEIDI -->
               <tr><td data-label="ID">13902</td><td data-label="Doctor's Name">Dr. Yousef Rabea (HOD)</td><td data-label="Mobile">0567127756</td><td data-label="Branch">SWEIDI</td></tr>
-              <tr><td data-label="ID">141944</td><td data-label="Doctor's Name">Dr. Ibrahim Almahbashi  </td><td data-label="Mobile">0532702543</td><td data-label="Branch">SWEIDI</td></tr>
+              <tr><td data-label="ID">141944</td><td data-label="Doctor's Name">Dr. Ibrahim Almahbashi</td><td data-label="Mobile">0532702543</td><td data-label="Branch">SWEIDI</td></tr>
               <tr><td data-label="ID">70927</td><td data-label="Doctor's Name">Dr. Ahmad Saeed Al Zahrani</td><td data-label="Mobile">0553377907</td><td data-label="Branch">SWEIDI</td></tr>
               <tr><td data-label="ID">397617</td><td data-label="Doctor's Name">Dr. Salah Al Humaid</td><td data-label="Mobile">0562388802</td><td data-label="Branch">SWEIDI</td></tr>
               <tr><td data-label="ID">417947</td><td data-label="Doctor's Name">Dr. Ali Albweady</td><td data-label="Mobile">0500856663</td><td data-label="Branch">SWEIDI</td></tr>
@@ -344,7 +366,7 @@ html,body{
 
               <!-- SAHAFA -->
               <tr><td data-label="ID">417571</td><td data-label="Doctor's Name">Dr. Abdulelah Alqarni (HOD)</td><td data-label="Mobile">0500549815</td><td data-label="Branch">SAHAFA</td></tr>
-              <tr><td data-label="ID">401403</td><td data-label="Doctor's Name">Dr. Ishaq Uri  </td><td data-label="Mobile">0502659398</td><td data-label="Branch">SAHAFA</td></tr>
+              <tr><td data-label="ID">401403</td><td data-label="Doctor's Name">Dr. Ishaq Uri</td><td data-label="Mobile">0502659398</td><td data-label="Branch">SAHAFA</td></tr>
               <tr><td data-label="ID">422284</td><td data-label="Doctor's Name">Dr. Rayyan Pervez</td><td data-label="Mobile">0501269125</td><td data-label="Branch">SAHAFA</td></tr>
               <tr><td data-label="ID">401466</td><td data-label="Doctor's Name">Dr. Mohammed Alsayyar</td><td data-label="Mobile">0544777753</td><td data-label="Branch">SAHAFA</td></tr>
               <tr><td data-label="ID">406924</td><td data-label="Doctor's Name">Dr. Bandar Al Fheed</td><td data-label="Mobile">0557109567</td><td data-label="Branch">SAHAFA</td></tr>
