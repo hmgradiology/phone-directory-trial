@@ -41,7 +41,7 @@ html,body{
 /* ===== Shell ===== */
 .sheet{
   width:min(100%, var(--page-w));
-  margin:48px auto 64px;       /* يخلق فراغ قبل الهيدر وبعد الفوتر على الشاشات الكبيرة */
+  margin:48px auto 64px;
   background:var(--white);
   border-radius:var(--radius-lg);
   box-shadow:var(--shadow-page);
@@ -163,13 +163,19 @@ html,body{
 
 /* ===== Mobile spacing tweak (ONLY phones) ===== */
 @media (max-width: 640px){
-  /* فراغ واضح فوق الهيدر وتحت الفوتر، مع مراعاة النوتش */
+  /* مساحة بيضاء قبل الهيدر وبعد الفوتر */
+  html, body{
+    min-height:100dvh;           /* وحدات عرض ديناميكية للتعامل مع شريط العنوان */
+    background:var(--bg);
+  }
+  body{
+    padding-top: calc(env(safe-area-inset-top, 0px) + 28px);     /* فراغ أعلى الهيدر */
+    padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 160px); /* فراغ كبير بعد الفوتر */
+  }
   .sheet{
-    margin:
-      calc(env(safe-area-inset-top, 0px) + 28px)
-      12px
-      calc(env(safe-area-inset-bottom, 0px) + 140px);
+    margin:0 12px;               /* نزيل الالتصاق الرأسي ونترك الهوامش الجانبية فقط */
     border-radius:18px;
+    box-shadow:var(--shadow-page);
   }
 }
 
