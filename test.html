@@ -83,25 +83,38 @@ html,body{
 .hero h1{ text-align:center; color:var(--brand); font-size:clamp(1.4rem, 2.6vw, 2rem); font-weight:800; line-height:1.3; margin-bottom:6px }
 .hero .meta{ text-align:center; color:var(--muted); font-size:clamp(.9rem, 1.2vw, 1.02rem) }
 
+/* ===== Section + Head (Enhanced Fill) ===== */
 .section{
   background:#fff;border:1px solid var(--line);border-radius:var(--radius);
   box-shadow:var(--shadow-card); overflow:hidden; margin-top:16px;
 }
 .section .head{
-  padding:12px 16px;border-bottom:1px solid var(--line);
-  text-align:center;font-weight:800;color:var(--brand);font-size:clamp(1.05rem, 1.8vw, 1.25rem)
+  position:relative;
+  padding:14px 16px;
+  text-align:center;
+  font-weight:800;
+  color:#fff;
+  font-size:clamp(1.05rem, 1.8vw, 1.25rem);
+  border-bottom:1px solid var(--line);
+  background:
+    linear-gradient(120deg, rgba(255,255,255,.12) 0%, rgba(255,255,255,0) 60%) center/cover no-repeat,
+    repeating-linear-gradient(-45deg, rgba(255,255,255,.08), rgba(255,255,255,.08) 10px, rgba(255,255,255,0) 10px, rgba(255,255,255,0) 20px),
+    linear-gradient(90deg, var(--brand) 0%, var(--brand-600) 100%);
+  box-shadow:inset 0 -1px 0 rgba(0,0,0,.08);
 }
 
+/* Inner padding */
 .pad{padding:14px 16px}
 
-/* Search row */
+/* ===== Search row (Centered) ===== */
 .search-row{
-  display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px
+  display:flex;align-items:center;justify-content:center;
+  gap:12px;flex-wrap:wrap;margin-bottom:12px; width:100%;
 }
 .search-row label{font-weight:800;color:var(--brand);display:flex;align-items:center;gap:8px}
 .search-row input{
   padding:12px 14px;border:1px solid #d7dbe2;border-radius:12px;min-width:280px;font-size:16px;outline:none;
-  width: clamp(240px, 40vw, 420px);
+  width: clamp(260px, 48vw, 520px);
   transition:border-color .2s ease, box-shadow .2s ease;
 }
 .search-row input:focus{border-color:var(--brand);box-shadow:0 0 0 3px rgba(231,79,84,.18)}
@@ -110,14 +123,20 @@ html,body{
   .search-row input{min-width:unset;width:100%}
 }
 
-/* Table wrapper + table */
-.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:14px;background:#fff}
+/* ===== Table wrapper + Table (Centered data) ===== */
+.table-wrap{
+  overflow:auto;border:1px solid var(--line);border-radius:14px;background:#fff;
+  display:flex;justify-content:center;align-items:stretch;
+}
 .directory{
-  width:100%;border-collapse:separate;border-spacing:0;min-width:820px;background:#fff
+  width:100%;
+  max-width:1200px;             /* يحافظ على عرض مناسب وسط الصفحة */
+  border-collapse:separate;border-spacing:0;min-width:820px;background:#fff;
+  margin:0 auto;
 }
 .directory thead th{
   background:linear-gradient(90deg,var(--bg), #fff);
-  color:var(--brand);font-weight:800;text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);
+  color:var(--brand);font-weight:800;text-align:center;padding:12px 14px;border-bottom:1px solid var(--line);
   position:sticky;top:0;z-index:1
 }
 /* Professional column separation + zebra */
@@ -126,13 +145,15 @@ html,body{
 .directory tbody tr{border-bottom:1px solid var(--line)}
 .directory tbody tr:nth-child(odd){background:#fafbfc}
 .directory tbody tr:hover{background:#f4f7ff55}
-.directory td{padding:12px 14px;vertical-align:middle;word-break:break-word}
-
+.directory td{
+  padding:12px 14px;vertical-align:middle;word-break:break-word;
+  text-align:center;
+}
 /* Emphasis */
 .directory td[data-label="Doctor's Name"]{font-weight:800;color:#0f141a}
 .directory td[data-label="Branch"]{font-weight:700;color:#374151}
 
-/* Actions */
+/* ===== Actions ===== */
 .actions{display:flex;justify-content:center;gap:10px;margin-top:14px}
 .button{
   display:inline-flex;align-items:center;gap:8px;
@@ -142,12 +163,12 @@ html,body{
 .button:hover{background-color:var(--brand-600)}
 .button:focus-visible{outline:3px solid rgba(231,79,84,.35);outline-offset:2px;border-radius:14px}
 
-/* ---------- Mobile Card Layout (Full Responsive) ---------- */
+/* ===== Mobile Card Layout ===== */
 @media (max-width: 768px){
   .container{padding:18px 14px 22px}
   .region-pill{max-width:70%}
-  .table-wrap{border:none}
-  .directory{min-width:0;border-collapse:collapse}
+  .table-wrap{border:none;display:block}
+  .directory{min-width:0;border-collapse:collapse;max-width:none}
   .directory thead{display:none}
   .directory, .directory tbody, .directory tr, .directory td{
     display:block; width:100%
@@ -163,8 +184,7 @@ html,body{
   .directory tbody tr:hover{background:#fff}
   .directory td{
     border:none; border-bottom:1px dashed #e9ecf1; padding:10px 6px 10px 44%;
-    position:relative;
-    min-height:42px;
+    position:relative; min-height:42px; text-align:left;   /* قراءة أسهل على الجوال */
   }
   .directory td:last-child{border-bottom:none}
   .directory td::before{
@@ -176,7 +196,7 @@ html,body{
   .directory tbody td + td{border-left:none}
 }
 
-/* Footer */
+/* ===== Footer ===== */
 .site-footer{
   background:linear-gradient(90deg,var(--brand) 0%, var(--brand-600) 100%);
   color:#fff;
@@ -214,7 +234,7 @@ html,body{
   <div class="container">
     <section class="hero">
       <h1>Radiology Consultants Contact Directory</h1>
-      <div class="meta">Live search by Name / ID / Branch — mobile-friendly</div>
+      <div class="meta">Live search by Name / ID / Branch</div>
     </section>
 
     <section class="section">
@@ -356,6 +376,7 @@ html,body{
 </div>
 
 <script>
+/* Live search across all columns */
 function searchDirectory(){
   var input=document.getElementById("searchInput");
   var filter=(input.value||"").toUpperCase();
