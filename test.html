@@ -5,7 +5,7 @@ header('Content-Type: text/html; charset=utf-8');
 <html lang="en" dir="ltr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 <title>Radiology Consultants – HMG</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&display=swap" rel="stylesheet">
@@ -32,10 +32,17 @@ header('Content-Type: text/html; charset=utf-8');
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{background:var(--bg);color:var(--ink);font-family:'Tajawal',system-ui,-apple-system,Segoe UI,Arial,sans-serif;line-height:1.75}
+html,body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:'Tajawal',system-ui,-apple-system,Segoe UI,Arial,sans-serif;
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
 
 .sheet{
-  width:var(--page-w);
+  width:min(100%, var(--page-w));
   margin:48px auto 64px;
   background:var(--white);
   border-radius:var(--radius-lg);
@@ -46,7 +53,7 @@ html,body{background:var(--bg);color:var(--ink);font-family:'Tajawal',system-ui,
 
 .topbar{
   background:linear-gradient(90deg,var(--brand) 0%, var(--brand-600) 100%);
-  color:#fff; padding:12px 28px;
+  color:#fff; padding:12px 20px;
   display:flex;align-items:center;justify-content:space-between;gap:16px;
 }
 .brand{display:flex;align-items:center;gap:12px}
@@ -60,77 +67,135 @@ html,body{background:var(--bg);color:var(--ink);font-family:'Tajawal',system-ui,
   background:#fff;color:var(--brand);
   padding:8px 18px;border-radius:999px;font-weight:800;border:1px solid rgba(255,255,255,.6);
   box-shadow:var(--shadow-soft);
-  max-width:55%; text-align:center;
+  max-width:60%; text-align:center; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
 }
 
-.container{padding:30px 34px 34px}
+.container{padding:26px 22px 28px}
 
 .hero{
   background:#fff; border:1px solid var(--line); border-radius:var(--radius);
-  box-shadow:var(--shadow-card); padding:26px 26px 22px; margin-bottom:20px; position:relative;
+  box-shadow:var(--shadow-card); padding:22px 20px 18px; margin-bottom:18px; position:relative;
 }
 .hero::after{
   content:''; position:absolute; inset:0 0 0 auto; width:6px; background:var(--brand);
   border-top-left-radius:6px; border-bottom-left-radius:6px;
 }
-.hero h1{ text-align:center; color:var(--brand); font-size:2rem; font-weight:800; line-height:1.3; margin-bottom:6px }
-.hero .meta{ text-align:center; color:var(--muted); font-size:1.02rem }
+.hero h1{ text-align:center; color:var(--brand); font-size:clamp(1.4rem, 2.6vw, 2rem); font-weight:800; line-height:1.3; margin-bottom:6px }
+.hero .meta{ text-align:center; color:var(--muted); font-size:clamp(.9rem, 1.2vw, 1.02rem) }
 
 .section{
   background:#fff;border:1px solid var(--line);border-radius:var(--radius);
-  box-shadow:var(--shadow-card); overflow:hidden; margin-top:18px;
+  box-shadow:var(--shadow-card); overflow:hidden; margin-top:16px;
 }
 .section .head{
-  padding:14px 18px;border-bottom:1px solid var(--line);
-  text-align:center;font-weight:800;color:var(--brand);font-size:1.25rem
+  padding:12px 16px;border-bottom:1px solid var(--line);
+  text-align:center;font-weight:800;color:var(--brand);font-size:clamp(1.05rem, 1.8vw, 1.25rem)
 }
 
-.pad{padding:16px 18px}
+.pad{padding:14px 16px}
 
+/* Search row */
 .search-row{
-  display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:8px
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px
 }
-.search-row label{font-weight:800;color:var(--brand)}
+.search-row label{font-weight:800;color:var(--brand);display:flex;align-items:center;gap:8px}
 .search-row input{
-  padding:10px 12px;border:1px solid #d7dbe2;border-radius:10px;min-width:280px;font-size:15px;outline:none
+  padding:12px 14px;border:1px solid #d7dbe2;border-radius:12px;min-width:280px;font-size:16px;outline:none;
+  width: clamp(240px, 40vw, 420px);
+  transition:border-color .2s ease, box-shadow .2s ease;
 }
 .search-row input:focus{border-color:var(--brand);box-shadow:0 0 0 3px rgba(231,79,84,.18)}
+@media (max-width: 600px){
+  .search-row{gap:10px}
+  .search-row input{min-width:unset;width:100%}
+}
 
-.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:12px}
-.directory{width:100%;border-collapse:separate;border-spacing:0;min-width:860px}
+/* Table wrapper + table */
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:14px;background:#fff}
+.directory{
+  width:100%;border-collapse:separate;border-spacing:0;min-width:820px;background:#fff
+}
 .directory thead th{
   background:linear-gradient(90deg,var(--bg), #fff);
   color:var(--brand);font-weight:800;text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);
   position:sticky;top:0;z-index:1
 }
-/* Professional column separation */
+/* Professional column separation + zebra */
 .directory thead th + th,
 .directory tbody td + td{border-left:1px solid #eef0f4}
+.directory tbody tr{border-bottom:1px solid var(--line)}
 .directory tbody tr:nth-child(odd){background:#fafbfc}
 .directory tbody tr:hover{background:#f4f7ff55}
-.directory td{padding:10px 14px}
+.directory td{padding:12px 14px;vertical-align:middle;word-break:break-word}
+
+/* Emphasis */
 .directory td[data-label="Doctor's Name"]{font-weight:800;color:#0f141a}
 .directory td[data-label="Branch"]{font-weight:700;color:#374151}
 
+/* Actions */
 .actions{display:flex;justify-content:center;gap:10px;margin-top:14px}
 .button{
   display:inline-flex;align-items:center;gap:8px;
-  padding:10px 16px;border-radius:10px;text-decoration:none;font-size:15px;font-weight:700;
+  padding:12px 18px;border-radius:12px;text-decoration:none;font-size:16px;font-weight:700;
   color:#FFF;background-color:var(--brand);transition:background-color .25s ease
 }
 .button:hover{background-color:var(--brand-600)}
+.button:focus-visible{outline:3px solid rgba(231,79,84,.35);outline-offset:2px;border-radius:14px}
 
-.sheet footer{
-  margin:18px 0 4px; padding:12px 0 0; border-top:1px solid var(--line); text-align:center; position:relative;
+/* ---------- Mobile Card Layout (Full Responsive) ---------- */
+@media (max-width: 768px){
+  .container{padding:18px 14px 22px}
+  .region-pill{max-width:70%}
+  .table-wrap{border:none}
+  .directory{min-width:0;border-collapse:collapse}
+  .directory thead{display:none}
+  .directory, .directory tbody, .directory tr, .directory td{
+    display:block; width:100%
+  }
+  .directory tbody tr{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:14px;
+    box-shadow:var(--shadow-soft);
+    margin-bottom:12px;
+    padding:10px 10px 4px 10px;
+  }
+  .directory tbody tr:hover{background:#fff}
+  .directory td{
+    border:none; border-bottom:1px dashed #e9ecf1; padding:10px 6px 10px 44%;
+    position:relative;
+    min-height:42px;
+  }
+  .directory td:last-child{border-bottom:none}
+  .directory td::before{
+    content:attr(data-label);
+    position:absolute; left:10px; top:50%; transform:translateY(-50%);
+    font-weight:800; color:var(--brand); width:34%;
+    text-align:left; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  }
+  .directory tbody td + td{border-left:none}
 }
-.sheet footer .main{color:var(--brand);font-weight:800}
-.sheet footer .sub{color:var(--brand-600);font-weight:600}
 
-@page{size:A3 landscape;margin:12mm}
+/* Footer */
+.site-footer{
+  background:linear-gradient(90deg,var(--brand) 0%, var(--brand-600) 100%);
+  color:#fff;
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  padding:14px 16px; margin-top:18px; border-top:1px solid rgba(255,255,255,.18);
+}
+.site-footer .copyright{
+  font-weight:700; letter-spacing:.2px; font-size:14.5px;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+
+/* Print friendly */
+@page{size:A4 portrait;margin:12mm}
 @media print{
   body{background:#fff}
   .sheet{box-shadow:none;border-radius:0;margin:0;width:auto}
   .hero,.section{box-shadow:none}
+  .search-row, .actions{display:none !important}
+  .site-footer{background:#fff;color:#000;border:0}
 }
 </style>
 </head>
@@ -149,7 +214,7 @@ html,body{background:var(--bg);color:var(--ink);font-family:'Tajawal',system-ui,
   <div class="container">
     <section class="hero">
       <h1>Radiology Consultants Contact Directory</h1>
-      <div class="meta">Live search by Name / ID / Branch</div>
+      <div class="meta">Live search by Name / ID / Branch — mobile-friendly</div>
     </section>
 
     <section class="section">
@@ -233,7 +298,7 @@ html,body{background:var(--bg);color:var(--ink);font-family:'Tajawal',system-ui,
               <tr><td data-label="ID">342466</td><td data-label="Doctor's Name">Dr. Hisham AlDossary (HOD)</td><td data-label="Mobile">0505869453</td><td data-label="Branch">KHOBAR</td></tr>
               <tr><td data-label="ID">416064</td><td data-label="Doctor's Name">Dr. Syeda Hajra Basharat</td><td data-label="Mobile">0538953628</td><td data-label="Branch">KHOBAR</td></tr>
               <tr><td data-label="ID">217996</td><td data-label="Doctor's Name">Dr. Tariq Hegazi</td><td data-label="Mobile">0503884858</td><td data-label="Branch">KHOBAR</td></tr>
-              <tr><td data-label="ID">248161</td><td data-label="Doctor's Name">Dr. Hassan Al Zahrani</td><td data-label="Mobile">0553776606</td><td data-label="Branch">KHOBAR</td></tr>
+              <tr><td data-label="ID">248161</td><td data-label="Doctor's Name">Dr. Hassan Al زahrani</td><td data-label="Mobile">0553776606</td><td data-label="Branch">KHOBAR</td></tr>
               <tr><td data-label="ID">249281</td><td data-label="Doctor's Name">Dr. Saeed Al-Jubran</td><td data-label="Mobile">0509345666</td><td data-label="Branch">KHOBAR</td></tr>
               <tr><td data-label="ID">280382</td><td data-label="Doctor's Name">Dr. Fouad Aladel</td><td data-label="Mobile">0503825284</td><td data-label="Branch">KHOBAR</td></tr>
               <tr><td data-label="ID">436912</td><td data-label="Doctor's Name">Dr. Adnan Al Samarah</td><td data-label="Mobile">0591333347</td><td data-label="Branch">KHOBAR</td></tr>
@@ -283,12 +348,11 @@ html,body{background:var(--bg);color:var(--ink);font-family:'Tajawal',system-ui,
         </div>
       </div>
     </section>
-
-    <footer>
-      <span class="main">Radiology – HMG</span><br>
-      <span class="sub">Quick contact directory</span>
-    </footer>
   </div>
+
+  <footer class="site-footer">
+    <div class="copyright">© 2025 Abdullah AlQarni. All rights reserved.</div>
+  </footer>
 </div>
 
 <script>
