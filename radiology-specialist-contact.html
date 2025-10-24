@@ -41,6 +41,7 @@ html,body{
   -moz-osx-font-smoothing:grayscale;
 }
 
+/* ===== Shell ===== */
 .sheet{
   width:min(100%, var(--page-w));
   margin:48px auto 64px;
@@ -51,6 +52,7 @@ html,body{
   position:relative;
 }
 
+/* ===== Topbar ===== */
 .topbar{
   background:linear-gradient(90deg,var(--brand) 0%, var(--brand-600) 100%);
   color:#fff; padding:12px 20px;
@@ -70,6 +72,7 @@ html,body{
   max-width:60%; text-align:center; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
 }
 
+/* ===== Container & Hero ===== */
 .container{padding:26px 22px 28px}
 
 .hero{
@@ -83,7 +86,7 @@ html,body{
 .hero h1{ text-align:center; color:var(--brand); font-size:clamp(1.4rem, 2.6vw, 2rem); font-weight:800; line-height:1.3; margin-bottom:6px }
 .hero .meta{ text-align:center; color:var(--muted); font-size:clamp(.9rem, 1.2vw, 1.02rem) }
 
-/* ===== Section + Head (Enhanced Fill) ===== */
+/* ===== Section ===== */
 .section{
   background:#fff;border:1px solid var(--line);border-radius:var(--radius);
   box-shadow:var(--shadow-card); overflow:hidden; margin-top:16px;
@@ -106,7 +109,7 @@ html,body{
 /* Inner padding */
 .pad{padding:14px 16px}
 
-/* ===== Search row (Centered) ===== */
+/* ===== Search row ===== */
 .search-row{
   display:flex;align-items:center;justify-content:center;
   gap:12px;flex-wrap:wrap;margin-bottom:12px; width:100%;
@@ -123,7 +126,7 @@ html,body{
   .search-row input{min-width:unset;width:100%}
 }
 
-/* ===== Table wrapper + Table (Centered data) ===== */
+/* ===== Table ===== */
 .table-wrap{
   overflow:auto;border:1px solid var(--line);border-radius:14px;background:#fff;
   display:flex;justify-content:center;align-items:stretch;
@@ -206,6 +209,28 @@ html,body{
 .site-footer .copyright{
   font-weight:700; letter-spacing:.2px; font-size:14.5px;
   white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+
+/* ===== Mobile behavior: header TOP, footer BOTTOM ===== */
+@media (max-width: 640px){
+  html, body { height:100%; }
+  body { display:block; }
+
+  .sheet{
+    margin:0;                /* يزيل الفراغ أعلى/أسفل */
+    min-height:100dvh;       /* طول شاشة الجوال */
+    border-radius:0;         /* يلتصق بالحواف */
+    box-shadow:none;         /* بدون ظل على الجوال */
+    display:flex;
+    flex-direction:column;   /* لدفع الفوتر لأسفل */
+  }
+
+  .container{ flex:1 0 auto; } /* المساحة بين الهيدر والفوتر */
+  .site-footer{
+    margin-top:auto;
+    border-top-left-radius:0;
+    border-top-right-radius:0;
+  }
 }
 
 /* Print friendly */
