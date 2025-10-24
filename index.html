@@ -163,19 +163,13 @@ html,body{
 
 /* ===== Mobile spacing tweak (ONLY phones) ===== */
 @media (max-width: 640px){
-  /* مساحة بيضاء قبل الهيدر وبعد الفوتر */
-  html, body{
-    min-height:100dvh;           /* وحدات عرض ديناميكية للتعامل مع شريط العنوان */
-    background:var(--bg);
-  }
-  body{
-    padding-top: calc(env(safe-area-inset-top, 0px) + 28px);     /* فراغ أعلى الهيدر */
-    padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 160px); /* فراغ كبير بعد الفوتر */
-  }
+  /* نخلي الخلفية أبيض لمساحة الرأس/الذيل */
+  html, body{ background:#fff; }
+
+  /* مسافة كبيرة قبل الهيدر وبعد الفوتر عبر هوامش للـ sheet */
   .sheet{
-    margin:0 12px;               /* نزيل الالتصاق الرأسي ونترك الهوامش الجانبية فقط */
+    margin:56px 12px 140px;  /* أعلى 56px — أسفل 140px */
     border-radius:18px;
-    box-shadow:var(--shadow-page);
   }
 }
 
